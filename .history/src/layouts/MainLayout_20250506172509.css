@@ -1,0 +1,38 @@
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* HEADER ocupa el 10% de la pantalla */
+.main-layout > *:first-child {
+  height: 8vh;
+  min-height: 60px; /* por si la pantalla es muy pequeña */
+}
+
+/* layout-body ocupa el 90% restante */
+.layout-body {
+  display: flex;
+  height: 92vh;
+}
+
+/* NO TOCARNO TOCAR  */
+.sidebar {
+  width: 230px;
+  min-width: 180px;
+  max-width: 240px;
+  background-color: #f2f2f2;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Clase para ocultar el sidebar */
+.sidebar-hidden {
+  transform: translateX(-100%);
+}
+
+/* CONTENIDO PRINCIPAL ocupa lo que queda */
+.layout-content {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}

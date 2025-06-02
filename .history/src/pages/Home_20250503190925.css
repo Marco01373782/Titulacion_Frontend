@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fondo sin scroll */
+html, body {
+    height: 100%;
+    overflow: hidden;
+    background-color: #D7E8E7;
+    font-family: sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Usa todo el alto de la pantalla */
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px;
+    background-color: #D7E8E7;
+    width: 100%;
+    position: relative;  /* Para poder centrar el logo */
+}
+
+/* Para centrar el logo */
+.logo {
+    
+    position: absolute;  
+    left: 50%;  
+    transform: translateX(-50%);
+}
+
+/* Para la parte derecha con los textos y el icono */
+.right {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+}
+
+/* Icono de pregunta */
+.info-icon {
+    cursor: pointer;
+    color: #3b3bfc;
+    font-size: 1.5rem;  /* Ajusta el tamaño del icono */
+}
+
+/* Contenedor misión y visión */
+.info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Imagen en header */
+.header img {
+    width: 250px;
+    height: 250px
+   
+}
+
+.centro {
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.centro img {
+    width: 300px;
+    height: 300px;
+}
+
+
+.tittle {
+    color: #1E5631;
+    font-size: 48px;
+    padding: 10px;
+}
+
+
+.text {
+    text-align: center;
+    font-size: 18px;
+    max-width: 600px;
+    color: #2C6D3D;
+    padding: 10px;
+}
+
+/* Botón login */
+.login {
+    background-color: #837efc;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Botón de contactos */
+.contactos {
+    background-color: #2C6D3D;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+/* Misión y Visión */
+.mision, .vision {
+    cursor: pointer;
+    font-size: 25px;
+    color: #3b3bfc;
+    text-decoration: underline;
+}

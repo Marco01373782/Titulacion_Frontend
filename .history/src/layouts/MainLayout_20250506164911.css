@@ -1,0 +1,38 @@
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  */
+.main-layout > *:first-child {
+  height: 8vh;
+  min-height: 60px; 
+}
+
+/*  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  */
+.layout-body {
+  display: flex;
+  height: 92vh;
+}
+
+/*  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  */
+.sidebar {
+  width: 200px;
+  min-width: 200px;
+  max-width: 250px;
+  background-color: #f2f2f2;
+  transition: transform 0.3s ease-in-out;
+}
+
+/*  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar */
+.sidebar-hidden {
+  transform: translateX(-100%);
+}
+
+/*  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  No tocar  */
+.layout-content {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+}

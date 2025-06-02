@@ -1,0 +1,128 @@
+.container-login {
+    display: flex;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .left-panel {
+    flex: 2;
+    background-color: #FFD2FE;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .left-panel h1 {
+    color: #2C6D3D;
+    font-size: 3.8rem;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .left-panel p {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #000;
+    width: 500px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .imagen {
+    max-width: 400px;
+    width: 70%;
+    height: auto;
+  }
+  
+  .right-panel {
+    flex: 1;
+    background-color: #e2e2e2;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;  /* Alinea todo hacia el principio */
+    position: relative;
+    box-shadow: -3px 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo-login {
+    border: 3px solid rgba(0, 0, 0, 0.547);
+    width: 80;
+    height: 80px;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+    margin-bottom: 20px; /* Asegura que el logo esté separado del resto del formulario */
+  }
+  
+  .login-form {
+    width: 100%;
+    height: 80%;    /* Hace que se ajuste al contenido */
+    max-width: 400px; /* Ajusta el tamaño para ser un poco más grande */
+    background: #A7A7A7;
+    padding: 2rem;  /* Añadido padding para el formulario */
+    border-radius: 8px;
+    border: 3px solid rgba(0, 0, 0, 0.547);
+    display: flex;
+    justify-content: center;
+    flex
+  }
+  
+  .login-form h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    border: 3px solid rgba(0, 0, 0, 0.547);
+  }
+  
+  .login-form label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+  
+  .login-form input {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .login-button {
+    margin-top: 1.5rem;
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .login-button:hover {
+    transform: scale(1.02);
+    background-color: #444;
+  }
+  
+  .back-button {
+    position: absolute; /* Posiciona el botón de forma absoluta */
+    bottom: 2rem; /* Lo coloca 2rem por encima del borde inferior */
+    left: 50%; /* Lo centra horizontalmente */
+    transform: translateX(-50%); /* Centra el botón exactamente */
+    border: 2px solid black;
+    background-color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;  /* Asegura que el botón tenga el mismo ancho */
+    max-width: 200px;  /* Limita el tamaño */
+  }
+  

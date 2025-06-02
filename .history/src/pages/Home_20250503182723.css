@@ -1,0 +1,116 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Fondo sin scroll */
+  html, body {
+   
+    overflow: hidden; /* IMPORTANTE para evitar scroll */
+    background-color: #D7E8E7;
+    font-family: sans-serif;
+    border: none; /* si tenías un borde, elimínalo o compénsalo */
+  }
+/* Contenedor principal */
+.container {
+    display: flex;
+    flex-direction: column;
+   
+    margin: 0;
+}
+
+/* Header ocupa 20% del alto de pantalla (ajustable) */
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px;
+    background-color: #D7E8E7;
+    width: 100%;
+    height: 10%;
+   
+}
+
+/* Contenedor misión y visión */
+.info {
+    display: flex;
+    justify-content: space-around;
+    
+    width: 25%;
+    display: flex;
+    
+    align-items: center;
+}
+.in {
+    display: flex;
+    gap: 10px;
+    border: 2px solid black;
+}
+
+/* Imagen en header */
+.header img {
+    width: 150px;
+    height: 150px;
+}
+
+/* Contenido central */
+.centro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+/* Imagen en centro */
+.centro img {
+    width: 350px;
+    height: 350px;
+   
+}
+
+/* Título */
+.tittle {
+    color: #1E5631;
+    font-size: 38px;
+   
+    padding: 10px;
+}
+
+/* Texto principal */
+.text {
+    text-align: center;
+    font-size: 18px;
+    max-width: 600px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* Botón login */
+.login {
+    background-color: #837efc;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Botón de contactos */
+.contactos {
+    background-color: #2F4F4F;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+/* Misión y Visión */
+.mision, .vision {
+    cursor: pointer;
+    font-size: 25px;
+    color: #3b3bfc;
+    text-decoration: underline;
+}

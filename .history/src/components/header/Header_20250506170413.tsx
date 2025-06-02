@@ -1,0 +1,27 @@
+import './Header.css';
+import Logoprincipal from '../../assets/logoprincipal.png';
+import SettingsIcon from '../../assets/';
+import UserIcon from '../../assets/user.png';
+import ExtraIcon from '../../assets/extra.png'; // ícono libre
+
+const Header = () => {
+  return (
+    <header className="header-app">
+      <div className="logoheader">
+        <img src={Logoprincipal} alt="logo" />
+      </div>
+
+      <div className="contenidoheader">
+        <h1 className="tituloapp">Mi Aplicación</h1>
+      </div>
+
+      <div className="ajustesheader">
+        <img src={UserIcon} alt="usuario" className="icono-header" />
+        <img src={SettingsIcon} alt="ajustes" className="icono-header" />
+        <img src={ExtraIcon} alt="extra" className="icono-header" />
+      </div>
+    </header>
+  );
+};
+
+export default Header;

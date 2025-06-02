@@ -1,0 +1,92 @@
+.container{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #D7E8E7;
+  }
+  
+  .container-welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .title-welcome {
+    font-size: 36px;
+    color: #1E5631;
+    margin-bottom: 20px;
+  }
+  
+  .subtitle-welcome {
+    font-size: 20px;
+    color: #2C6D3D;
+    margin-bottom: 30px;
+    max-width: 600px;
+    line-height: 1.5;
+  }
+  
+  .image-welcome {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+    margin-bottom: 30px;
+  }
+  
+  .description-welcome {
+    font-size: 18px;
+    color: #2C6D3D;
+    max-width: 650px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+  }
+  
+  .buttons-welcome {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .btn-completar, .btn-omitir {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    width: 170px;
+    height: 45px;
+  }
+  
+  .btn-completar {
+    background-color: #6764B2;
+    color: white;
+  }
+  
+  .btn-completar:hover {
+    background-color: #6d69e6;
+    transform: scale(1.05);
+  }
+  
+  .btn-completar:active {
+    transform: scale(0.97);
+  }
+  
+  .btn-omitir {
+    background-color: #2C6D3D;
+    color: white;
+  }
+  
+  .btn-omitir:hover {
+    background-color: #40b05e;
+    transform: scale(1.05);
+  }
+  
+  .btn-omitir:active {
+    transform: scale(0.97);
+  }
+  

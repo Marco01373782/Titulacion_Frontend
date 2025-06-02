@@ -1,0 +1,73 @@
+.container-registerpatient {
+    max-width: 100%;
+    text-align: center;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    gap: 20px;
+  }
+  
+  .text-welcome{
+    padding-top: 0px;
+    padding-bottom: 0.3rem;
+    font-size: 15px;
+    color: darkred;
+   
+  }
+
+  .title-register {
+    font-size: 28px;
+    margin-bottom: 0.8rem;
+    color: #2C6D3D;
+  }
+  
+  .form-registerpatient {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    background-color: #a7a7a788;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 38%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 3px solid rgba(0, 0, 0, 0.44);
+  }
+  
+  .form-group,
+  .photo-section {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  
+  input,
+  select {
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .btn-submit {
+    background-color: #2C6D3D;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+  
+  .btn-submit:hover {
+    background-color: #3a8951;
+  }
+  

@@ -1,0 +1,169 @@
+    .container-register {
+        display: flex;
+        height: 100vh;
+        font-family: 'Arial', sans-serif;
+    }
+    
+    .left-panel-register {
+        flex: 1;
+        background-color: #d00d0d;
+        padding: 0.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .register-form {
+        width: 100%;
+        max-width: 400px;
+        background: #A7A7A7;
+        padding: 0.7rem;
+        border-radius: 8px;
+        border: 3px solid rgba(0, 0, 0, 0.547);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+        height: 90%;
+    }
+    
+    .logo-register {
+        border: 3px solid rgba(0, 0, 0, 0.547);
+        width: 65px;
+        height: 65px;
+        background-color: #fff;
+        border-radius: 50%;
+        margin-bottom: 5px;
+    }
+    
+    .register-form h2 {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    .question {
+        display: flex;
+        gap: 8px;
+        font-size: 13px;
+        margin-bottom: 0.2rem;
+    }
+    
+    .registrar {
+        text-decoration: underline;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .input-group label {
+        font-size: 14px;
+        font-weight: 700;
+        margin-top: 0.5rem;
+
+    }
+    
+    .input-group input,
+    .input-group select {
+        padding: 0.6rem;
+        margin-top: 0.2rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    .full-width {
+        width: 100%;
+    }
+    
+    .row-input {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+    }
+    
+    .register-button {
+        margin-top: 1.5rem;
+        width: 100%;
+        background-color: black;
+        color: white;
+        padding: 0.8rem;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+        border: 3px solid rgba(0, 0, 0, 0.547);
+        transition: all 0.2s ease-in-out;
+    }
+    
+    .register-button:hover {
+        transform: scale(1.02);
+        background-color: #444;
+    }
+    
+    .alert {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    .alert p {
+        font-size: 10px;
+        font-weight: 400;
+    }
+    
+    .otros {
+        width: 100%;
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    .logos {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 10px;
+    }
+    
+    .logo-google,
+    .logo-facebook {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .right-panel-register {
+        flex: 2;
+        background-color: #FFD2FE;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .right-panel-register h1 {
+        color: #2C6D3D;
+        font-size: 3.8rem;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .right-panel-register p {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #000;
+        width: 500px;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .imagen {
+        max-width: 400px;
+        width: 70%;
+        height: auto;
+    }
+    

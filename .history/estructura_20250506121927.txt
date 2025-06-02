@@ -1,0 +1,53 @@
+ src/
+├── assets/                # Imágenes, íconos, logos, etc.
+│   └── logo.png
+│
+├── components/            # Componentes reutilizables
+│   ├── modal
+|   |   |---modal.tsx
+|   |   |---modal.css
+│   ├── |---Contactmodal.css
+│   └── |---Contactmodal.tsx
+│
+├── context/              
+│   
+│
+├── pages/                 # Páginas visibles
+│   ├── login
+|   |     |---login.tsx
+|   |     └─login.css
+|   ├── home
+|   |     |---home.tsx
+|   |     └─home.css
+│   └─
+├── router/                # Configuración de rutas
+│   └── AppRouter.tsx
+│
+├── services/              # Conexión al backend
+│   └── api.ts
+│
+├── styles/                # Estilos globales o módulos
+│   ├── App.css
+│   └── index.css
+│
+├── App.tsx                # Componente principal de tu app
+├── main.tsx               # Punto de entrada que renderiza App
+└── vite-env.d.ts          # Config de Vite (déjalo)
+
+
+AL DARLE CLICK:
+  .contact-back:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .contact-back {
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .contact-back:active {
+    transform: scale(0.97);
+    background-color: #e6ffe6;
+  }
+  

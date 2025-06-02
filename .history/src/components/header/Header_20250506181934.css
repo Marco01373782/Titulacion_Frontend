@@ -1,0 +1,55 @@
+.header-app {
+  display: flex;
+  align-items: center;
+  background-color: #6ACAC9;
+  color: rgb(0, 0, 0);
+  height: 100%;
+  
+  
+}
+.logoheader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 210px;
+  height: 100%;
+  background:#458281 ;
+  box-shadow: 2px 4pcx5px rgba(0, 0, 0, 0.529);
+}
+.logoheader img {
+  height: 50px;
+  width: auto;
+  
+}
+
+.contenidoheader {
+  flex: 1;
+  text-align: center;
+  width: 500px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tituloapp {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.ajustesheader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+ 
+  height: 100%;
+  width: 200px;
+}
+
+.icono-header {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  
+}

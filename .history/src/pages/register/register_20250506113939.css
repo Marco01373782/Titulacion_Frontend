@@ -1,0 +1,202 @@
+    .container-register {
+        display: flex;
+        height: 100vh;
+        font-family: 'Arial', sans-serif;
+        
+    }
+    
+    .left-panel-register {
+        flex: 1;
+        background-color: #d00d0d;
+        display: flex;
+        aling
+        
+    }
+    
+    .register-form {
+        width: 100%;
+        max-width: 400px;
+        background: #A7A7A7;
+        padding: 0.7rem;
+        border-radius: 8px;
+        border: 3px solid rgba(0, 0, 0, 0.547);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+       
+        
+    }
+    
+    .logo-register {
+        border: 3px solid rgba(0, 0, 0, 0.547);
+        width: 65px;
+        height: 65px;
+        background-color: #fff;
+        border-radius: 50%;
+        margin-bottom: 3px;
+    }
+    
+    .register-form h2 {
+        text-align: center;
+        font-size: 1.5rem;
+        margin-bottom: 0.2rem;
+    }
+    
+    .question {
+        display: flex;
+        gap: 8px;
+        font-size: 13px;
+        
+    }
+    
+    .registrar {
+        text-decoration: underline;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .input-group label {
+        font-size: 14px;
+        font-weight: 700;
+        margin-top: 0.5rem;
+
+    }
+    
+    .input-group input,
+    .input-group select {
+        padding: 0.6rem;
+        margin-top: 0.2rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    .full-width {
+        width: 100%;
+    }
+    
+    .row-input {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+    }
+    
+    .register-button {
+        margin-top: 1rem;
+        width: 100%;
+        background-color: black;
+        color: white;
+        padding: 0.8rem;
+        border: none;
+        border-radius: 4px;
+        font-weight: 600;
+        cursor: pointer;
+        border: 3px solid rgba(0, 0, 0, 0.547);
+        transition: all 0.2s ease-in-out;
+    }
+    
+    .register-button:hover {
+        transform: scale(1.02);
+        background-color: #444;
+    }
+    
+    .alert {
+        width: 100%;
+        text-align: center;
+        border: 2px solid rebeccapurple;
+        height: 5%;
+    }
+    
+    .alert p {
+        font-size: 10px;
+        
+    }
+    
+    .otros {
+        width: 100%;
+        text-align: center;
+        border: 2px solid rebeccapurple;
+        height: 10%;
+    }
+    
+    .logos {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        
+    }
+    
+    .logo-google,
+    .logo-facebook {
+        width: 35px;
+        height: 35px;
+    }
+    back-button {
+        position: absolute;
+        bottom: 3rem;
+        left: 50%;
+      
+        transform: translateX(-50%);
+        border: 2px solid black;
+        background-color: white;
+        padding: 0.6rem 1.2rem;
+        border-radius: 10px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        max-width: 200px;
+        transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+      }
+      
+      .back-button:hover {
+        background: #00000046;
+        transition: transform 0.2s ease-in-out;
+      }
+      
+      .back-button{
+        transition: all 0.2s ease-in-out;
+        cursor: pointer;
+      }
+      
+      .back-button:active {
+        transform: translateX(-50%) scale(0.97); 
+      }
+    /*////////////////////////////////////////////////////////////////////////////////////////////////////*/
+    .right-panel-register {
+        flex: 2;
+        background-color: #FFD2FE;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .right-panel-register h1 {
+        color: #2C6D3D;
+        font-size: 3.8rem;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .right-panel-register p {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #000;
+        width: 500px;
+        font-family: 'Poppins', sans-serif;
+    }
+    
+    .imagen {
+        max-width: 400px;
+        width: 70%;
+        height: auto;
+    }
+    

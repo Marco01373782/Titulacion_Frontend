@@ -1,0 +1,127 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fondo sin scroll */
+html, body {
+    height: 100%;
+    overflow: hidden;
+    background-color: #D7E8E7;
+    font-family: sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Usa todo el alto de la pantalla */
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px;
+    background-color: #D7E8E7;
+    width: 100%;
+    position: relative;  /* Para poder centrar el logo */
+}
+
+/* Para centrar el logo */
+.logo {
+    width: 150px;  
+    height: 10vh;  /* Altura fija del logo */
+    position: absolute;  /* Esto permite que el logo esté en el centro */
+    left: 50%;  /* Coloca el logo en el centro horizontal */
+    transform: translateX(-50%); /* Ajusta el logo para que esté perfectamente centrado */
+}
+
+/* Para la parte derecha con los textos y el icono */
+.right {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+}
+
+/* Icono de pregunta */
+.info-icon {
+    cursor: pointer;
+    color: #3b3bfc;
+    font-size: 1.5rem;  /* Ajusta el tamaño del icono */
+}
+
+/* Contenedor misión y visión */
+.info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Imagen en header */
+.header img {
+    width: 150px;
+    height: 10vh;
+    border: 1px solid black;
+}
+
+/* Contenido central */
+.centro {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Imagen en centro */
+.centro img {
+    width: 350px;
+    height: 350px;
+}
+
+/* Título */
+.tittle {
+    color: #1E5631;
+    font-size: 38px;
+    padding: 10px;
+}
+
+/* Texto principal */
+.text {
+    text-align: center;
+    font-size: 18px;
+    max-width: 600px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* Botón login */
+.login {
+    background-color: #837efc;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Botón de contactos */
+.contactos {
+    background-color: #2C6D3D;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: 1px solid black;
+}
+
+/* Misión y Visión */
+.mision, .vision {
+    cursor: pointer;
+    font-size: 25px;
+    color: #3b3bfc;
+    text-decoration: underline;
+}

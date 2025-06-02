@@ -1,0 +1,115 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #d7e8e7c5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .contact-modal {
+    background: #fff3e0;
+    border-radius: 20px;
+    border: 5px solid #444;
+    width: 500px;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+  }
+  
+  /* Logo en lugar de la X */
+  .modal-logo {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 50px;
+    height: auto;
+    width: 100px;
+    height: 100px;
+  }
+  
+  /* Título más pequeño y centrado */
+  .contact-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #2C6D3D;
+    border: 3px solid #2C6D3D;
+    border-radius: 20px;
+    display: inline-block;
+    padding: 5px 15px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .contact-text {
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 20px;
+    color: #000;
+  }
+  
+  .contact-info {
+    text-align: left;
+    margin: 0 auto 20px auto;
+    width: 90%;
+    font-size: 16px;
+    list-style-type: disc;
+  }
+  
+  .contact-info li {
+    margin-bottom: 10px;
+  }
+  
+  .contact-info a {
+    color: #4b2be6;
+    text-decoration: none;
+  }
+            .contact-info a:hover{
+                color: #000000;
+            }
+  
+  .whatsapp-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #2C6D3D;
+    background: #fff;
+    padding: 10px;
+    margin: 20px auto;
+    width: fit-content;
+    gap: 10px;
+    font-weight: bold;
+  }
+        .whatsapp-button:hover{
+            border: 2px solid #1de352;
+        }
+        .whatsapp-button span:hover{
+            color: #3f3d3d;
+        }
+  .whatsapp-button img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .contact-back {
+    margin-top: 15px;
+    padding: 8px 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: 2px solid #000;
+    cursor: pointer;
+  }
+        .contact-back:hover
+  .whatsapp-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    gap: 10px;
+  }
+  

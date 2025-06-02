@@ -1,0 +1,10 @@
+h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .div-principal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }

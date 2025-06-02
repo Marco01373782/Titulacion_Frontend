@@ -1,0 +1,95 @@
+/* Asegura que todo el viewport esté cubierto */
+body, html {
+    margin: 0;
+    padding: 0;
+    
+    background-color: #D7E8E7;
+    font-family: sans-serif;
+}
+
+/* Contenedor principal para controlar el layout */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Header ocupa el ancho completo y un alto fijo */
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    height: 5%;
+    border: 2px solid black;
+
+}
+.header img{
+    width: 70px;
+    height: 70px;
+}
+
+/* Botón de contactos */
+.contactos {
+    background-color: #2F4F4F;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+/* Misión y visión */
+.mision, .vision {
+    margin-left: 20px;
+    cursor: pointer;
+    color: #3b3bfc;
+    text-decoration: underline;
+}
+
+/* Contenido central */
+.centro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 20px;
+    border: 2px solid black;
+}
+.centro img{
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+}
+
+/* Título */
+.tittle {
+    color: #1E5631;
+    font-size: 28px;
+    margin: 20px 0;
+    border: 2px solid black;
+}
+
+/* Texto principal */
+.text {
+    text-align: center;
+    font-size: 18px;
+    max-width: 600px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* Botón login */
+.login {
+    background-color: #837efc;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}

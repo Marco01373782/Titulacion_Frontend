@@ -1,0 +1,64 @@
+.activity-list-container {
+  padding: 2rem;
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btn-crear {
+  padding: 0.5rem 1rem;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.activity-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+.activity-table th, .activity-table td {
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.activity-table th {
+  background-color: #f0f0f0;
+  font-weight: 600;
+}
+
+.activity-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.activity-table button {
+  margin-right: 0.5rem;
+  padding: 0.3rem 0.7rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.activity-table button:first-of-type {
+  background-color: #ffa726;
+  color: white;
+}
+
+.activity-table button:last-of-type {
+  background-color: #ef5350;
+  color: white;
+}

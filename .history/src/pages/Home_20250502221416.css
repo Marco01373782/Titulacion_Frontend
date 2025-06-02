@@ -1,0 +1,118 @@
+/* Asegura que todo esté dentro del tamaño asignado */
+* {
+    box-sizing: border-box;
+}
+
+/* Cubre toda la pantalla */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #D7E8E7;
+    font-family: sans-serif;
+   
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+/* Header ocupa 20% del alto de pantalla (ajustable) */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #D7E8E7;
+    width: 100%;
+    height: 8vh;
+   
+}
+
+/* Contenedor misión y visión */
+.info {
+    display: flex;
+   flex-direction: spac;
+    border: 2px solid black;
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.in {
+    display: flex;
+    gap: 10px;
+    border: 2px solid black;
+}
+
+/* Imagen en header */
+.header img {
+    width: 150px;
+    height: 150px;
+}
+
+/* Contenido central */
+.centro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+/* Imagen en centro */
+.centro img {
+    width: 350px;
+    height: 350px;
+    border: 2px solid black;
+}
+
+/* Título */
+.tittle {
+    color: #1E5631;
+    font-size: 38px;
+    border: 2px solid black;
+    padding: 10px;
+}
+
+/* Texto principal */
+.text {
+    text-align: center;
+    font-size: 18px;
+    max-width: 600px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* Botón login */
+.login {
+    background-color: #837efc;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Botón de contactos */
+.contactos {
+    background-color: #2F4F4F;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+/* Misión y Visión */
+.mision, .vision {
+    cursor: pointer;
+    color: #3b3bfc;
+    text-decoration: underline;
+}

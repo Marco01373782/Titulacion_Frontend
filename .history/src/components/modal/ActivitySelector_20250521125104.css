@@ -1,0 +1,39 @@
+.activity-selector-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.activity-selector-modal {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  max-height: 90vh;
+  overflow-y: auto;
+  width: 80%;
+}
+
+.activity-groups {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.activity-group {
+  flex: 1;
+  min-width: 250px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1rem;
+}

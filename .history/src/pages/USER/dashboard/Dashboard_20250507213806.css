@@ -1,0 +1,16 @@
+h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .div-principal{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .div-principal img{
+    width: 3500px;
+    height: auto;
+  }

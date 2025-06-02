@@ -1,0 +1,94 @@
+import './patientRegister.css';
+import { useState } from 'react';
+
+const RegisterPatient = () => {
+  const [form, setForm] = useState({
+    firstname: '',
+    secondname: '',
+    surname: '',
+    age: '',
+    gender_id: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Formulario enviado:', form);
+    // Aquí va tu lógica con Axios o fetch
+  };
+
+  return (
+    <div className="container-registerpatient">
+      <h2 className="title-register">Registro del Paciente</h2>
+
+      <form className="form-registerpatient" onSubmit={handleSubmit}>
+        
+        <div className="form-group">
+          <label>Primer Nombre</label>
+          <input
+            type="text"
+            name="firstname"
+            value={form.firstname}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Segundo Nombre</label>
+          <input
+            type="text"
+            name="secondname"
+            value={form.secondname}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Apellido</label>
+          <input
+            type="text"
+            name="surname"
+            value={form.surname}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Edad</label>
+          <input
+            type="number"
+            name="age"
+            value={form.age}
+            onChange={handleChange}
+            required
+            min="0"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Género</label>
+          <select
+            name="gender_id"
+            value={form.gender_id}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Selecciona</option>
+            <option value="1">Masculino</option>
+            <option value="2">Femenino</option>
+            <option value="3">Otro</option>
+          </select>
+        </div>
+
+        <button type="submit" className="btn-submit">Registrar Paciente</button>
+      </form>
+    </div>
+  );
+};
+
+export default RegisterPatient;

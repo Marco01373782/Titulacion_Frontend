@@ -1,0 +1,39 @@
+.sesion-create-container {
+  max-width: 600px;
+  margin: auto;
+  padding: 1rem;
+}
+
+.sesion-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.asignar-buttons {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.manual-select {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 2px dashed #ccc;
+  background-color: #f9f9f9;
+}
+
+.manual-select ul {
+  list-style: none;
+  padding: 0;
+}
+
+.manual-select li {
+  margin-bottom: 0.5rem;
+}
+
+.mensaje {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #007bff;
+}
