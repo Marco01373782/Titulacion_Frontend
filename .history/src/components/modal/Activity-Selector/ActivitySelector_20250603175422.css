@@ -1,0 +1,101 @@
+.activity-selector-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.activity-selector-modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px 32px;
+  width: 720px;
+  max-width: 90vw;
+  height: 500px; /* tamaño fijo sin scroll */
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.activity-selector-modal h3 {
+  margin: 0 0 16px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #222;
+}
+
+.activity-list-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+  gap: 24px;
+  flex-grow: 1;
+  overflow: hidden; /* evitar scroll */
+}
+
+.activity-type-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.activity-type-group h4 {
+  margin-bottom: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #444;
+  text-align: center;
+}
+
+.activity-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  align-items: center;
+}
+
+.activity-item {
+  padding: 10px 14px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  user-select: none;
+  border: 2px solid transparent;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  font-size: 0.95rem;
+  color: #333;
+  width: 140px;
+  text-align: center;
+}
+
+.activity-item:hover {
+  background-color: #d0d0d0;
+  border-color: #999;
+}
+
+.activity-item.selected {
+  background-color: #007bff;
+  border-color: #0056b3;
+  color: white;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: center; /* botones centrados */
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.modal-buttons button {
+  padding: 10px 22px;
+  border-

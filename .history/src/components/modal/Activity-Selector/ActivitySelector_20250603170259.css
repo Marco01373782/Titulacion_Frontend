@@ -1,0 +1,56 @@
+.activity-selector-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.activity-selector-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.activity-type-group {
+  margin-bottom: 20px;
+}
+
+.activity-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+}
+
+.activity-item {
+  padding: 10px 16px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.activity-item.selected {
+  background-color: #4caf50;
+  color: white;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
