@@ -1,0 +1,138 @@
+/* Home.css */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #D7E8E7;
+  color: #2C6D3D;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 15px;
+  position: relative;
+}
+
+.contact-button {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: #2C6D3D;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+.contact-button:hover {
+  background: #40b05e;
+}
+
+.header {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 180px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-link {
+  cursor: pointer;
+  font-size: 1.1rem;
+  text-decoration: underline;
+  color: #6764B2;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+.nav-link:hover {
+  color: #2C6D3D;
+  transform: scale(1.05);
+}
+
+.main-content {
+  flex: 1;
+  max-width: 700px;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.home-image {
+  width: 250px;
+  max-width: 90vw;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  color: #2C6D3D;
+}
+
+.login-button {
+  background-color: #6764B2;
+  color: white;
+  padding: 12px 25px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 180px;
+}
+.login-button:hover {
+  background-color: #6d69e6;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .nav-links {
+    gap: 15px;
+  }
+  .nav-link {
+    font-size: 1rem;
+  }
+  .title {
+    font-size: 1.8rem;
+  }
+  .description {
+    font-size: 1rem;
+  }
+  .login-button {
+    width: 140px;
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+  .logo {
+    width: 140px;
+  }
+}

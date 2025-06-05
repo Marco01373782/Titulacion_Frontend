@@ -1,0 +1,98 @@
+.header-app {
+  display: flex;
+  align-items: center;
+  background-color: #6ACAC9;
+  color: rgb(0, 0, 0);
+  height: 100%;
+  
+  
+}
+.logoheader{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 210px;
+  height: 100%;
+  background:#458281 ;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+
+}
+.logoheader img {
+  height: 50px;
+  width: auto;
+  
+}
+
+.contenidoheader {
+  flex: 1;
+  text-align: center;
+  width: 500px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tituloapp {
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.ajustesheader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+ 
+  height: 100%;
+  width: 240px;
+}
+
+.icono-header {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  
+}
+.rol-header {
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #333;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.rol-header.admin {
+  background-color: #6dde5e;
+  color: #000;
+}
+
+
+.rol-header.user {
+  background-color: #ffffffcc;
+  color: #000;
+}
+
+/* resonsive*/
+.menu-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 1rem;
+  display: none;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .menu-button {
+    display: block;
+  }
+
+  .logoheader {
+    display: none; /* Puedes ocultar el logo en móviles si lo deseas */
+  }
+}

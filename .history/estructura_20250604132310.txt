@@ -1,0 +1,110 @@
+ src/
+├── assets/                # Imágenes, íconos, logos, etc.
+│   └── logo.png
+│
+├── components/            # Componentes reutilizables
+│   ├── modal
+|   |   |---modal.tsx
+|   |   |---modal.css
+│   ├── |---Contactmodal.css
+│   └── |---Contactmodal.tsx
+│
+├── context/              
+│   
+│
+├── pages/                 # Páginas visibles
+│   ├── dashboard
+│   ├── home
+│   ├── login
+|   ├── register
+│   ├── NotFound
+|   ├── prueba 
+│   ├── Admin/             # Panel del admin
+│   │   ├── ManageSessions.tsx
+│   │   └── ManageActivities.tsx
+│   └── User/              # Panel del usuario común
+│       ├── Sessions.tsx
+│       ├── Activities.tsx
+│       └── Test.tsx
+│
+├── router/                # Configuración de rutas
+│   └── AppRouter.tsx
+│
+├── services/              # Conexión al backend
+│   └── api.ts
+│
+├── styles/                # Estilos globales o módulos
+│   ├── App.css
+│   └── index.css
+│
+├── App.tsx                # Componente principal de tu app
+├── main.tsx               # Punto de entrada que renderiza App
+└── vite-env.d.ts          # Config de Vite (déjalo)
+
+
+AL DARLE CLICK:
+  .contact-back:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .contact-back {
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .contact-back:active {
+    transform: scale(0.97);
+    background-color: #e6ffe6;
+  }
+  
+
+
+
+                                // 1. Memoria - Principiante (Parejas)
+                              export const MemoriaParejas = () => {
+                                // lógica base para emparejar cartas
+                                return <div>🧠 Memoria - Principiante: Encuentra las parejas</div>;
+};
+
+                              // 2. Memoria - Avanzado (Secuencia numérica creciente)
+                              export const MemoriaSecuenciaAvanzada = () => {
+                                // lógica para mostrar números secuenciales y repetir
+                                return <div>🧠 Memoria - Avanzado: Repite la secuencia numérica</div>;
+                              };
+
+                              // 3. Razonamiento - Test (Completa secuencia lógica)
+                              export const RazonamientoTest = () => {
+                                // lógica para elegir el número o figura que completa la secuencia
+                                return <div>🔍 Razonamiento - Test: Completa la secuencia</div>;
+                              };
+
+// 4. Razonamiento - Principiante (Aritmética básica)
+export const RazonamientoAritmetica = () => {
+  // lógica para hacer operaciones básicas bajo tiempo
+  return <div>🔍 Razonamiento - Principiante: Aritmética rápida</div>;
+};
+
+// 5. Razonamiento - Avanzado (Rompecabezas tipo sudoku)
+export const RazonamientoRompecabezas = () => {
+  // lógica de rompecabezas lógico básico
+  return <div>🔍 Razonamiento - Avanzado: Rompecabezas lógico</div>;
+};
+
+// 6. Atención y Concentración - Test (Símbolo diferente)
+export const AtencionSimboloDiferente = () => {
+  // lógica para detectar símbolo distinto en grupo
+  return <div>🎯 Atención - Test: Encuentra el símbolo diferente</div>;
+};
+
+// 7. Atención y Concentración - Principiante (Sigue la luz)
+export const AtencionSecuenciaLuz = () => {
+  // lógica para repetir secuencia visual de luces
+  return <div>🎯 Atención - Principiante: Sigue la secuencia de luces</div>;
+};
+
+// 8. Atención y Concentración - Avanzado (Evita el color prohibido)
+export const AtencionColorProhibido = () => {
+  // lógica de reacción: no hacer clic en color específico
+  return <div>🎯 Atención - Avanzado: No pulses el color prohibido</div>;
+};

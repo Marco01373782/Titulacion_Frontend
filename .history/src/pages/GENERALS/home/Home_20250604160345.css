@@ -1,0 +1,249 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; 
+    background-color: #D7E8E7;
+}
+
+/* HEADER PC */
+.header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #D7E8E7;
+    width: 100%;
+    position: relative;  
+}
+
+/* Logo centrado */
+.logo {
+    position: absolute;  
+    left: 50%;  
+    transform: translateX(-50%);
+    width: 180px;
+    height: auto;
+}
+
+/* Contenedor derecho con Misión, Visión y icono */
+.right {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+    min-width: 200px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 25px;
+}
+
+.info-icon {
+    cursor: pointer;
+    color: #6764B2;
+    font-size: 1.5rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.info-icon:hover {
+    color: black;
+    transform: scale(1.05);
+}
+
+/* Botones de Misión y Visión */
+.mision, .vision {
+    cursor: pointer;
+    font-size: 22px;
+    color: #6764B2;
+    text-decoration: underline;
+    transition: all 0.2s ease-in-out;
+}
+
+.mision:hover, .vision:hover {
+    color: black;
+    transform: scale(1.05);
+}
+
+/* Botón Contactos */
+.contactos {
+    background-color: #2C6D3D;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.contactos:hover {
+    background-color: #40b05e;
+    transform: scale(1.05);
+}
+
+.contactos:active {
+    transform: scale(0.97);
+}
+
+/* CONTENIDO CENTRAL */
+.centro {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px;
+}
+
+.centro img {
+    width: 280px;
+    height: auto;
+    max-width: 90vw;
+}
+
+.tittle {
+    color: #2C6D3D;
+    font-size: 48px;
+    padding: 10px;
+    text-align: center;
+}
+
+.text {
+    text-align: center;
+    font-size: 22px;
+    max-width: 750px;
+    color: #2C6D3D;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Botón Iniciar Sesión */
+.login {
+    background-color: #6764B2;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.login:hover {
+    background: #6d69e6;
+    transform: scale(1.05);
+}
+
+.login:active {
+    transform: scale(0.87);
+}
+
+/* ======================= */
+/* RESPONSIVE - MÓVIL       */
+/* ======================= */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 20px;
+        height: auto;
+        position: relative;
+    }
+
+    .logo {
+        position: static;
+        transform: none;
+        width: 150px;
+        margin-bottom: 10px;
+    }
+
+    .right {
+        width: 100%;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 10px;
+    }
+
+    .info {
+        gap: 15px;
+    }
+
+    .mision, .vision {
+        font-size: 18px;
+    }
+
+    .contactos {
+        width: 130px;
+        height: 35px;
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .centro {
+        margin: 0 10px;
+    }
+
+    .tittle {
+        font-size: 32px;
+    }
+
+    .text {
+        font-size: 18px;
+        max-width: 90vw;
+    }
+
+    .login {
+        width: 130px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .centro img {
+        width: 220px;
+        margin-bottom: 15px;
+    }
+}
+
+/* Para pantallas muy pequeñas (teléfonos pequeños) */
+@media (max-width: 400px) {
+    .mision, .vision {
+        font-size: 16px;
+    }
+
+    .contactos, .login {
+        width: 120px;
+        height: 32px;
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+
+    .tittle {
+        font-size: 28px;
+    }
+
+    .text {
+        font-size: 16px;
+    }
+
+    .centro img {
+        width: 180px;
+    }
+}

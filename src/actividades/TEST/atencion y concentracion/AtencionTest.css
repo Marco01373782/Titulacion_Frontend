@@ -1,0 +1,39 @@
+    .atencion-container {
+    padding: 2rem;
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    }
+
+    .simbolo-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 60px);
+    grid-gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+    }
+
+    .simbolo-btn {
+    font-size: 1.8rem;
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 8px;
+    background: #f2f2f2;
+    cursor: pointer;
+    transition: 0.2s;
+    }
+
+    .simbolo-btn:hover {
+    background: #dcdcdc;
+    }
+
+    .mensaje {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    }

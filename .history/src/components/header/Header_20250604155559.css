@@ -1,0 +1,149 @@
+.header-app {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #6ACAC9;
+  color: rgb(0, 0, 0);
+  height: 7vh;
+  min-height: 40px;
+  padding: 0 1rem;
+  gap: 1rem;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  user-select: none;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 220px; /* Para que logo no se mueva */
+}
+
+.sidebar-toggle {
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  display: none; /* Solo móvil */
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+  color: #000;
+}
+
+.logoheader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  cursor: pointer;
+}
+
+.logoheader img {
+  height: 45px;
+  width: auto;
+  user-select: none;
+}
+
+.header-center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.tituloapp {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  user-select: none;
+}
+
+.ajustesheader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  min-width: 240px;
+}
+
+.icono-header {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icono-header:hover {
+  transform: scale(1.1);
+}
+
+.rol-header {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: #333;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* Estilo personalizado para Admin */
+.rol-header.admin {
+  background-color: #6dde5e;
+  color: #000;
+}
+
+/* Estilo personalizado para User */
+.rol-header.user {
+  background-color: #ffffffcc;
+  color: #000;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    display: block;
+  }
+
+  .header-left {
+    min-width: auto;
+    gap: 10px;
+  }
+
+  .logoheader img {
+    height: 38px;
+  }
+
+  .header-center {
+    display: none; /* Oculta título para móvil */
+  }
+
+  .ajustesheader {
+    min-width: auto;
+    gap: 12px;
+  }
+
+  .icono-header {
+    width: 20px;
+    height: 20px;
+  }
+
+  .rol-header {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+  }
+}

@@ -1,0 +1,61 @@
+    .razonamiento-test {
+    max-width: 600px;
+    margin: auto;
+    padding: 2rem;
+    background: #fdfdfd;
+    border-radius: 1rem;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', sans-serif;
+    }
+
+    .secuencia {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 1rem 0;
+    }
+
+    .elemento {
+    font-weight: bold;
+    color: #333;
+    }
+
+    .formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    }
+
+    .input-respuesta {
+    padding: 0.6rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 60%;
+    text-align: center;
+    }
+
+    .boton {
+    background-color: #007acc;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    }
+
+    .boton:hover {
+    background-color: #005fa3;
+    }
+
+    .resultado {
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    }
