@@ -1,11 +1,15 @@
   import { useState, useEffect } from 'react';
   import { useNavigate } from 'react-router-dom';
-  import { fetchDifficulties, fetchActivityTypes } from '../../../../services/ApiService';
+  import { fetchDifficulties } from '../../../../services/ApiService';
+  import { fetchActivityTypes } from '../../../../services/ApiService';
   import ApiService from '../../../../services/ApiService';
   import Toast from '../../../../components/toast/Toast';
   import LoadingOverlay from '../../../../components/modal/Loading/LoadingOverlay';
-  import availableActivityResources from '../../../../data/availableActivityResources';
   import './CreateActivity.css';
+  import availableActivityResources from '../../../../data/availableActivityResources';
+
+
+  // ... imports igual
 
   const CreateActivity = () => {
     const [title, setTitle] = useState('');
@@ -13,8 +17,10 @@
     const [resourceUrl, setResourceUrl] = useState('');
     const [manualUrl, setManualUrl] = useState('');
     const [useManualUrl, setUseManualUrl] = useState(false);
-    const [difficulty, setDifficulty] = useState('');
-    const [activityType, setActivityType] = useState('');
+
+    const [difficulty, setDifficulty] = useState<string>(''); 
+    const [activityType, setActivityType] = useState<string>(''); 
+
     const [difficulties, setDifficulties] = useState<string[]>([]);
     const [types, setTypes] = useState<string[]>([]);
     const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
@@ -26,9 +32,9 @@
       const fetchData = async () => {
         try {
           const diffRes = await fetchDifficulties();
-          setDifficulties(diffRes.data);
+          setDifficulties(diffRes.data); 
           const typesRes = await fetchActivityTypes();
-          setTypes(typesRes.data);
+          setTypes(typesRes.data); 
         } catch {
           setToast({ message: 'Error cargando datos', type: 'error' });
         }
@@ -104,31 +110,20 @@
               />
             </label>
           ) : (
-            <label className="activity-component-selector">
+            <label>
               Selecciona componente de actividad:
-              <div className="selector-with-preview">
-                <select
-                  value={resourceUrl}
-                  onChange={e => setResourceUrl(e.target.value)}
-                  required
-                >
-                  <option value="" disabled>Selecciona recurso</option>
-                  {availableActivityResources.map(res => (
-                    <option key={res.value} value={res.value}>{res.label}</option>
-                  ))}
-                </select>
-
-                {resourceUrl && (
-                  <button
-                    type="button"
-                    className="preview-button"
-                    onClick={() => window.open(resourceUrl, '_blank')}
-                    title="Vista previa"
-                  >
-                    🔍
-                  </button>
-                )}
-              </div>
+              <input
+                list="activity-options"
+                value={resourceUrl}
+                onChange={e => setResourceUrl(e.target.value)}
+                placeholder="Buscar o seleccionar recurso"
+                required
+              />
+              <datalist id="activity-options">
+                {availableActivityResources.map(res => (
+                  <option key={res.value} value={res.value}>{res.label}</option>
+                ))}
+              </datalist>
             </label>
           )}
 
