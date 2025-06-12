@@ -6,7 +6,7 @@
             saveSessionActivityResult,
             updateSesionUsuario,
             getSesionUsuarioById
-        } from '../../../services/ApiService';
+        } from '../../../../services/ApiService';
         import activityComponentsMap from '../activityComponentsMap';
 
         const SesionRunner: React.FC = () => {
@@ -15,8 +15,8 @@
 
             const session = location.state?.session || JSON.parse(localStorage.getItem('selectedSession') || 'null');
             const initialActivities = location.state?.activities || JSON.parse(localStorage.getItem('selectedActivities') || '[]');
-            const [sesionStartTime, setSesionStartTime] = useState<Date | null>(null);
-            const [activities, setActivities] = useState<any[]>(initialActivities);
+            
+            const [activities] = useState<any[]>(initialActivities);
             const [currentIndex, setCurrentIndex] = useState(0);
             const [isLoading, setIsLoading] = useState(initialActivities.length === 0);
             const [activityScore, setActivityScore] = useState<number | null>(null);
@@ -25,16 +25,16 @@
             const [scores, setScores] = useState<number[]>([]);
 
             const userId = Number(localStorage.getItem('userId'));
-            console.log("Usuario ID cargado", userId);
+            /*console.log("Usuario ID cargado", userId);*/
             const sesionUsuarioId = Number(localStorage.getItem('selectedSesionUsuarioId'));
-            console.log("🧠 SesionUsuarioId cargado:", sesionUsuarioId);
+            /*console.log("🧠 SesionUsuarioId cargado:", sesionUsuarioId);*/
 
             useEffect(() => {
             if (activities.length > 0) {
-                console.log('✅ Actividades cargadas:', activities);
+                /*console.log('✅ Actividades cargadas:', activities);*/
                 setIsLoading(false);
             } else {
-                console.warn('⚠️ No se encontraron actividades');
+                 console.warn('⚠️ No se encontraron actividades');
             }
         }, [activities]);
 
