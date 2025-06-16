@@ -1,10 +1,10 @@
 
-import './Dashboard.css';
-const Dashboard = () => {
+import './Dashboardindividual.css';
+const DashboardIndividual = () => {
   return (
     <div className='div-principal'>
       <h2>Bienvenido al Dashboard</h2>
-      <p>PAGINA PRINCIPAL DE CONTENIDO </p>
+      <p>PAGINA PRINCIPAL  holaaaaa DE CONTENIDO </p>
     
     </div>
   );

@@ -1,0 +1,47 @@
+.estadisticas-container {
+  padding: 20px;
+}
+
+.sesiones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.sesion-card {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 1rem;
+  background: #f9f9f9;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sesion-card:hover {
+  background: #eaeaea;
+}
+
+.detalles-sesion {
+  margin-top: 1rem;
+}
+
+.btn-volver {
+  background: #444;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.activity-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.activity-table th, .activity-table td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}

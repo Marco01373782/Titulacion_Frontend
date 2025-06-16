@@ -1,0 +1,28 @@
+    .estadisticas-container {
+    padding: 2rem;
+    }
+
+    .sesion-card {
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: #f9f9f9;
+    cursor: pointer;
+    }
+
+    .sesion-header:hover {
+    background-color: #e8f0fe;
+    }
+
+    .activity-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    }
+
+    .activity-table th,
+    .activity-table td {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    }

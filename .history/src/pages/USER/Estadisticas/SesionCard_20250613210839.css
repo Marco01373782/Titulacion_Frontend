@@ -1,0 +1,80 @@
+    .sesion-card {
+    width: 150px;
+    height: 150px;
+    background-color: #f9f9f9;
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    position: relative;
+    }
+
+    .sesion-card:hover {
+    transform: scale(1.05);
+    }
+
+    .result-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    }
+
+    /* Colores dinámicos por resultado */
+    .result-green {
+    border-color: #4CAF50;
+    color: #4CAF50;
+    }
+
+    .result-orange {
+    border-color: #FFA500;
+    color: #FFA500;
+    }
+
+    .result-red {
+    border-color: #F44336;
+    color: #F44336;
+    }
+
+    .modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    }
+
+    .close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    }

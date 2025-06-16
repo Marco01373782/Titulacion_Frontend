@@ -1,0 +1,140 @@
+/* src/estadisticas/estadisticas.css */
+
+.estadisticas-container {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.estadisticas-nav {
+  display: flex;
+  gap: 10px;
+  background-color: #eee;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #3f51b5 transparent;
+}
+
+.estadisticas-nav::-webkit-scrollbar {
+  height: 6px;
+}
+
+.estadisticas-nav::-webkit-scrollbar-thumb {
+  background-color: #3f51b5;
+  border-radius: 3px;
+}
+
+.estadisticas-nav button {
+  background: none;
+  border: none;
+  padding: 8px 14px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  color: #333;
+  white-space: nowrap;
+}
+
+.estadisticas-nav button.active {
+  background-color: #3f51b5;
+  color: white;
+  font-weight: bold;
+}
+
+.estadisticas-nav button:disabled {
+  color: #999;
+  cursor: not-allowed;
+}
+
+/* Sesiones grid */
+.sesiones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.sesion-card {
+  position: relative;
+  background: #fff;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #A7A7A7;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sesion-card:hover {
+  transform: scale(1.03);
+}
+
+.resultado-circle {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 48px;
+  height: 48px;
+  border: 3px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+.sesion-info p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.sesion-fecha {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.detalles-sesion {
+  margin-top: 2rem;
+}
+
+.btn-volver {
+  background: #3f51b5;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .estadisticas-nav {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .estadisticas-nav button {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .sesiones-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sesion-card {
+    height: auto;
+  }
+}
