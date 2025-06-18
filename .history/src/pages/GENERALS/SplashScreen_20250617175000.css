@@ -1,0 +1,91 @@
+/* Fondo negro mate: cubre toda la pantalla */
+.splash-container {
+  background-color: #000000; /* color de fondo */
+  width: 100vw; /* ancho 100% de la ventana */
+  height: 100vh; /* alto 100% de la ventana */
+  display: flex; /* usa flexbox para centrar el contenido */
+  flex-direction: column; /* organiza los elementos en columna */
+  justify-content: center; /* centra verticalmente */
+  align-items: center; /* centra horizontalmente */
+}
+
+/* Contenedor del logo SVG (cerebro) */
+.logo-container-animation {
+  width: 500px; /* ancho fijo del logo */
+  height: auto; /* alto proporcional al viewBox del SVG */
+   /* espacio debajo del logo */
+}
+
+/* Ajuste de tamaño del SVG dentro del contenedor */
+.brain-svg {
+  width: 100%; /* ocupa todo el ancho del contenedor */
+  height: 100%; /* ocupa todo el alto del contenedor */
+}
+
+/* Animación de trazo: dibujo inverso del path del cerebro */
+.logo-path {
+  stroke-dasharray: 50000; 
+  stroke-dashoffset: 50000;
+  animation: drawReverse 4.5s forwards ease-in-out;
+  
+  stroke: #ffffff; /* color blanco puro para el trazo */
+  filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 10px #fff) drop-shadow(0 0 90px #0ff);
+  /* Este filter crea un brillo difuso blanco y un leve toque cyan */
+}
+
+
+/* Definición de la animación para dibujar el trazo */
+@keyframes drawReverse {
+  to {
+    stroke-dashoffset: 0; /* cuando llega a 0, el trazo queda completamente visible */
+  }
+}
+
+/* Estilo del texto "NeuroX" */
+.NeuroX {
+  color: rgba(255, 255, 255, 0.515); /* texto en blanco */
+  font-size: 4rem; /* tamaño grande del título */
+  text-align: center; /* centrado horizontal */
+  opacity: 0; /* inicialmente invisible */
+  filter: drop-shadow(0 0 1px #fff) ;
+  animation: fadeInText 2s ease-in 2.3s forwards; /* aparece después de 3s, cuando el logo casi termina de dibujarse */
+}
+
+/* Animación para hacer aparecer el texto con un pequeño efecto de subida */
+@keyframes fadeInText {
+  from {
+    opacity: 0; /* inicia invisible */
+    transform: translateY(20px); /* empieza un poco más abajo */
+  }
+  to {
+    opacity: 1; /* aparece completamente */
+    transform: translateY(0); /* queda en su posición final */
+  }
+}
+
+
+
+/* Ajustes responsive para pantallas medianas */
+@media (max-width: 768px) {
+  .logo-container-animation {
+    width: 250px; /* reduce el tamaño del logo */
+    height: 170px;
+  }
+  
+  .title {
+    font-size: 2rem; /* texto más pequeño */
+  }
+}
+
+/* Ajustes responsive para pantallas muy pequeñas (móviles) */
+@media (max-width: 480px) {
+  .logo-container-animation {
+    width: 220px;
+    height: 140px;
+  }
+  
+  .NeuroX {
+    font-size: 1.5rem;
+  }
+  
+}

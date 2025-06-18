@@ -1,0 +1,416 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; 
+    background-color: #D7E8E7;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px;
+    background-color: #D7E8E7;
+    width: 100%;
+    position: relative;  
+}
+
+.logo {
+    
+    position: absolute;  
+    left: 50%;  
+    transform: translateX(-50%);
+}
+
+.right {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 25%;
+}
+
+
+.info-icon {
+    cursor: pointer;
+    color: #6764B2;
+    font-size: 1.5rem;  
+}
+    .info-icon:hover{
+        color: black;
+    }
+
+.info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 25px;
+}
+
+
+.header img {
+    width: 250px;
+    height: 250px
+   
+}
+
+.centro {
+   gap: 15px;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.centro img {
+    width: 280px;
+    height: 280px;
+}
+
+
+.tittle {
+    
+    color: #000000;
+    font-size: 48px;
+    padding: 10px;
+}
+
+
+.text {
+  font-weight: ;
+    text-align: center;
+    font-size: 22px;
+    max-width: 750px;
+    color: #2C6D3D;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.login {
+    background-color: #6764B2;
+    color: white;
+    padding: 10px 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    width: 150px;
+    height: 40px;
+}
+
+
+.contactos {
+    background-color: #2C6D3D;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    width: 150px;
+    height: 40px;
+
+}
+    .contactos:hover{
+        background-color: #40b05e;
+    }
+
+
+.mision, .vision {
+    cursor: pointer;
+    font-size: 22px;
+    color: #6764B2;
+    text-decoration: underline;
+    font-family: 'Poppins', sans-serif;
+
+}
+    .mision:hover{
+        color: black;
+}
+    .vision:hover{
+        color: black;
+}
+.contactos:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .contactos {
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .contactos:active {
+    transform: scale(0.97);
+    
+  }
+  
+  .mision:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .mision {
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .mision:active {
+    transform: scale(0.97);
+    
+  }
+  .vision:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .vision {
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .vision:active {
+    transform: scale(0.97);
+    
+  }
+  
+
+  .info-icon:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .info-icon{
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .info-icon:active {
+    transform: scale(0.87);
+    
+  }
+  .login:hover {
+    background: #6d69e6;
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .login{
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .login:active {
+    transform: scale(0.87);
+    
+  }
+  /*responsive*/
+  /* Responsive móvil para pantallas menores a 768px */
+@media screen and (max-width: 767px) {
+  html, body {
+    overflow: auto; /* permitir scroll vertical si hace falta */
+    font-size: 16px; /* base legible */
+  }
+
+  .container {
+    height: 100vh;
+    padding: 10px 5px; /* quitar paddings grandes */
+    background-color: #D7E8E7;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+  }
+
+  .logo {
+    position: static;
+    transform: none;
+    width: 180px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .right {
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .info {
+    gap: 15px;
+    font-size: 18px;
+  }
+
+  .info-icon {
+    font-size: 1.8rem;
+  }
+
+  .contactos {
+    width: 100%;
+    max-width: 300px;
+    height: 45px;
+    font-size: 18px;
+    padding: 10px 0;
+  }
+
+  .centro {
+    flex: none;
+    margin: 0 auto;
+    padding: 10px;
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+  }
+
+  .centro img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .tittle {
+    font-size: 28px;
+    padding: 10px 5px;
+  }
+
+  .text {
+    font-size: 16px;
+    max-width: 100%;
+    padding: 5px;
+    line-height: 1.3;
+  }
+
+  .login {
+    width: 100%;
+    max-width: 280px;
+    height: 45px;
+    font-size: 18px;
+    padding: 12px 0;
+  }
+
+  /* Ocultar el icono de pregunta para evitar saturar espacio */
+  .info-icon {
+    display: none;
+  }
+
+ 
+  .info {
+    display: none;
+  }
+  
+}
+/* Oculta o muestra los botones según tamaño */
+.contacto-header {
+    display: block;
+}
+
+.contacto-footer {
+    display: none;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    background-color: #D7E8E7;
+}
+
+/* Estilo para el botón "Contacto" en responsive */
+.contactos-footer {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #2C6D3D;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: all 0.2s ease-in-out;
+}
+
+.contactos-footer:hover {
+    color: #40b05e;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .contacto-header {
+        display: none;
+    }
+
+    .contacto-footer {
+        display: block;
+    }
+
+    .header {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .logo {
+        position: static;
+        transform: none;
+        width: 180px;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    .header img {
+        width: 180px;
+        height: auto;
+    }
+
+    .right {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .info {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .mision, .vision {
+        font-size: 18px;
+    }
+
+    .info-icon {
+        font-size: 1.3rem;
+    }
+
+    .tittle {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .text {
+        font-size: 18px;
+        padding: 5px;
+    }
+
+    .login {
+        width: 120px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .centro img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+  

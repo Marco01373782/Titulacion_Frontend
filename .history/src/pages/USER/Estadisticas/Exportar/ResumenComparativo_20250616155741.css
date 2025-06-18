@@ -1,0 +1,59 @@
+    .resumen-comparativo-container {
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .tabla-comparativa {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    margin-top: 1rem;
+    }
+
+    .tabla-comparativa thead tr {
+    background-color: #1976d2;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 10px;
+    }
+
+    .tabla-comparativa th, .tabla-comparativa td {
+    padding: 0.75rem 1rem;
+    text-align: center;
+    }
+
+    .tabla-comparativa tbody tr {
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    }
+
+    .tabla-comparativa tbody tr:nth-child(even) {
+    background-color: #f2f7ff;
+    }
+
+    .tabla-comparativa tbody tr:hover {
+    background-color: #e3f2fd;
+    cursor: pointer;
+    }
+
+    .btn-export {
+    margin-top: 1rem;
+    background-color: #1976d2;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(25, 118, 210, 0.6);
+    }
+
+    .btn-export:hover {
+    background-color: #155a9c;
+    box-shadow: 0 4px 10px rgba(21, 90, 156, 0.8);
+    }

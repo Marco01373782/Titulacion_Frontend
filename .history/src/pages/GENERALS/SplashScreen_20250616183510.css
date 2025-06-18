@@ -1,0 +1,69 @@
+    /* Fondo full negro mate */
+    .splash-container {
+    background-color: #000000;  /* negro profundo */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+
+    /* Contenedor del logo (puede ser imagen o animación luego) */
+    .logo-container {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    /* Imagen del cerebro (aquí pondrás el PNG futurista) */
+    .brain {
+    width: 100%;
+    height: 100%;
+    background: url('../../../assets/brain-particles.png') no-repeat center center;
+    background-size: contain;
+    filter: drop-shadow(0 0 20px #4db8ff);
+    }
+
+    /* Título */
+    .title {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+    animation: fadeInText 2s ease-in forwards 1s;
+    }
+
+    /* Animaciones */
+    @keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInText {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+    .logo-container {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+    }
+
+    @media (max-width: 480px) {
+    .logo-container {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .title {
+        font-size: 1.5rem;
+    }
+    }

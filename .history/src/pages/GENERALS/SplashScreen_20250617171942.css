@@ -1,0 +1,89 @@
+/* Fondo negro mate: cubre toda la pantalla */
+.splash-container {
+  background-color: #000000; /* color de fondo */
+  width: 100vw; /* ancho 100% de la ventana */
+  height: 100vh; /* alto 100% de la ventana */
+  display: flex; /* usa flexbox para centrar el contenido */
+  flex-direction: column; /* organiza los elementos en columna */
+  justify-content: center; /* centra verticalmente */
+  align-items: center; /* centra horizontalmente */
+}
+
+/* Contenedor del logo SVG (cerebro) */
+.logo-container {
+  width: 400px; /* ancho fijo del logo */
+  height: 230px; /* alto proporcional al viewBox del SVG */
+  margin-bottom: 20px; /* espacio debajo del logo */
+}
+
+/* Ajuste de tamaño del SVG dentro del contenedor */
+.brain-svg {
+  width: 100%; /* ocupa todo el ancho del contenedor */
+  height: 100%; /* ocupa todo el alto del contenedor */
+}
+
+/* Animación de trazo: dibujo inverso del path del cerebro */
+.logo-path  {
+  stroke-dasharray: 50000; /* longitud total del trazo a "recorrer" */
+  stroke-dashoffset: 50000; /* empieza oculto al 100% */
+  animation: drawReverse 4s forwards ease-in-out; /* va dibujando el trazo */
+}
+
+/* Definición de la animación para dibujar el trazo */
+@keyframes drawReverse {
+  to {
+    stroke-dashoffset: 0; /* cuando llega a 0, el trazo queda completamente visible */
+  }
+}
+
+/* Estilo del texto "NeuroX" */
+.title {
+  color: white; /* texto en blanco */
+  font-size: 4rem; /* tamaño grande del título */
+  text-align: center; /* centrado horizontal */
+  opacity: 0; /* inicialmente invisible */
+  animation: fadeInText 2s ease-in 3s forwards; /* aparece después de 3s, cuando el logo casi termina de dibujarse */
+}
+
+/* Animación para hacer aparecer el texto con un pequeño efecto de subida */
+@keyframes fadeInText {
+  from {
+    opacity: 0; /* inicia invisible */
+    transform: translateY(20px); /* empieza un poco más abajo */
+  }
+  to {
+    opacity: 1; /* aparece completamente */
+    transform: translateY(0); /* queda en su posición final */
+  }
+}
+
+/* Animación de "latido" o pulsación del logo */
+@keyframes pulse {
+  0% { transform: scale(1); } /* tamaño normal */
+  50% { transform: scale(1.05); } /* crece un poco */
+  100% { transform: scale(1); } /* vuelve al tamaño normal */
+}
+
+/* Ajustes responsive para pantallas medianas */
+@media (max-width: 768px) {
+  .logo-container {
+    width: 220px; /* reduce el tamaño del logo */
+    height: 170px;
+  }
+  
+  .title {
+    font-size: 2rem; /* texto más pequeño */
+  }
+}
+
+/* Ajustes responsive para pantallas muy pequeñas (móviles) */
+@media (max-width: 480px) {
+  .logo-container {
+    width: 180px;
+    height: 140px;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+}
