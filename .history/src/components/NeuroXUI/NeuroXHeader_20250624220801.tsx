@@ -7,8 +7,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Logosegundario from '../../assets/imagenes/logo_segundario.webp';
 import { getUserById } from '../../services/ApiService';
-import UserProfilemodal from './UserProfileModal';
-import SettingsModal from './SettingsModal';
+import UserProfilePopover from '../UserProfilePopover/UserProfilePopover';
 
 interface NeuroXHeaderProps {
   onToggleSidebar: () => void;
@@ -29,7 +28,6 @@ const NeuroXHeader: React.FC<NeuroXHeaderProps> = ({ onToggleSidebar }) => {
 
   const [user, setUser] = useState<User | null>(null);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-  const [settingsOpen, setSettingsOpen] = useState(false); // Estado modal ajustes
 
   const handleLogout = () => {
     localStorage.clear();
@@ -49,20 +47,12 @@ const NeuroXHeader: React.FC<NeuroXHeaderProps> = ({ onToggleSidebar }) => {
     fetchUser();
   }, [userId]);
 
-  const handleClickUser = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleCloseUserPopover = () => {
+  const handleClose = () => {
     setAnchorEl(null);
-  };
-
-  const handleOpenSettings = () => {
-    setSettingsOpen(true);
-  };
-
-  const handleCloseSettings = () => {
-    setSettingsOpen(false);
   };
 
   return (
@@ -95,7 +85,7 @@ const NeuroXHeader: React.FC<NeuroXHeaderProps> = ({ onToggleSidebar }) => {
             <IconButton onClick={handleLogout} color="inherit">
               <ExitToAppIcon />
             </IconButton>
-            <IconButton color="inherit" onClick={handleOpenSettings}>
+            <IconButton color="inherit">
               <SettingsIcon />
             </IconButton>
 
@@ -103,7 +93,7 @@ const NeuroXHeader: React.FC<NeuroXHeaderProps> = ({ onToggleSidebar }) => {
               <Button
                 variant="outlined"
                 sx={{ color: '#fff', borderColor: '#fff', textTransform: 'none' }}
-                onClick={handleClickUser}
+                onClick={handleClick}
               >
                 {user.firstName}
               </Button>
@@ -113,16 +103,13 @@ const NeuroXHeader: React.FC<NeuroXHeaderProps> = ({ onToggleSidebar }) => {
       </AppBar>
 
       {user && (
-        <UserProfilemodal
+        <UserProfilePopover
           anchorEl={anchorEl}
-          onClose={handleCloseUserPopover}
+          onClose={handleClose}
           user={user}
           onLogout={handleLogout}
         />
       )}
-
-      {/* Ventana modal de ajustes */}
-      <SettingsModal open={settingsOpen} onClose={handleCloseSettings} />
     </>
   );
 };

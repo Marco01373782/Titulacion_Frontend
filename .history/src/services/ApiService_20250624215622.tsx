@@ -173,7 +173,7 @@ export const getFullPatientByUserId = (userId: number): Promise<AxiosResponse<Pa
   return ApiService.get(`/patients/by-user-full/${userId}`);
 };
 export const getUserById = (id: number) => {
-  return ApiService.get(`/users/${id}`);
+  return A.get(`/users/${id}`);
 };
 
 

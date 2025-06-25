@@ -113,7 +113,7 @@ const NeuroXHeader: React.FC<NeuroXHeaderProps> = ({ onToggleSidebar }) => {
       </AppBar>
 
       {user && (
-        <UserProfilemodal
+        <UserProfilePopover
           anchorEl={anchorEl}
           onClose={handleCloseUserPopover}
           user={user}

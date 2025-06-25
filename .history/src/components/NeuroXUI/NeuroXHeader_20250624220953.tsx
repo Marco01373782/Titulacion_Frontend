@@ -7,8 +7,8 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Logosegundario from '../../assets/imagenes/logo_segundario.webp';
 import { getUserById } from '../../services/ApiService';
-import UserProfilemodal from './UserProfileModal';
-import SettingsModal from './SettingsModal';
+import UserProfilePopover from '../UserProfilePopover/UserProfilePopover';
+import SettingsModal from '../SettingsModal/SettingsModal';  // IMPORTA el modal
 
 interface NeuroXHeaderProps {
   onToggleSidebar: () => void;
@@ -113,7 +113,7 @@ const NeuroXHeader: React.FC<NeuroXHeaderProps> = ({ onToggleSidebar }) => {
       </AppBar>
 
       {user && (
-        <UserProfilemodal
+        <UserProfilePopover
           anchorEl={anchorEl}
           onClose={handleCloseUserPopover}
           user={user}
