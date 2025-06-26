@@ -41,11 +41,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
         <>
             {userRole === 'user' && (
                 <Box
-                    onClick={() => {
-                    setShowConfirmDialog(true);
-                    if (!isDesktop) onClose(); 
-                }}
-
+                    onClick={() => setShowConfirmDialog(true)}
                     sx={{
                         display: 'flex',
                         alignItems: 'center',

@@ -26,7 +26,7 @@
 .logo-path {
   stroke-dasharray: 50000; 
   stroke-dashoffset: 50000;
-  animation: drawReverse 3.5s forwards ease-in-out;
+  animation: drawReverse s forwards ease-in-out;
   
   stroke: #ffffff; /* color blanco puro para el trazo */
   filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 10px #fff) drop-shadow(0 0 40px #0ff);
@@ -48,7 +48,7 @@
   text-align: center; /* centrado horizontal */
   opacity: 0; /* inicialmente invisible */
   filter: drop-shadow(0 0 1px #0ff) ;
-  animation: fadeInText 2s ease-in 2.5s forwards; /* aparece después de 3s, cuando el logo casi termina de dibujarse */
+  animation: fadeInText 2s ease-in 3s forwards; /* aparece después de 3s, cuando el logo casi termina de dibujarse */
 }
 
 /* Animación para hacer aparecer el texto con un pequeño efecto de subida */

@@ -43,7 +43,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                 <Box
                     onClick={() => {
                     setShowConfirmDialog(true);
-                    if (!isDesktop) onClose(); 
+                    if (!isDesktop) onClose(); // Cierra el Drawer si estás en móvil
                 }}
 
                     sx={{

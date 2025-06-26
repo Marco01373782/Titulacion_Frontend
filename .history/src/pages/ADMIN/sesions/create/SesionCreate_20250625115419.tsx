@@ -164,7 +164,21 @@ const SesionCreate: React.FC = () => {
                     onSelectionChange={setSelectedActivityIds}
                     onClose={() => setShowManualSelect(false)}
                     onConfirm={(selectedIds) => {
-                        
+                        const tiposSeleccionados = new Set(
+                            activities.filter((a) => selectedIds.includes(a.id)).map((a) => a.type)
+                        );
+
+                        if (selectedIds.length === 0) {
+                            return setToast({ message: 'Selecciona al menos una actividad', type: 'error' });
+                        }
+
+                        if (tiposSeleccionados.size < tiposNecesarios.length) {
+                            return setToast({
+                                message: `Debes seleccionar al menos una actividad por cada tipo (${tiposNecesarios.length} tipos)`,
+                                type: 'error',
+                            });
+                        }
+
                         setLoading(true);
                         setLoadingMessage('Asignando actividades...');
 
