@@ -1,0 +1,16 @@
+    // src/data/availableActivityResources.ts
+    const availableActivityResources = [
+    { label: 'Memoria - Intermedio', value: '/actividades/memoria-intermedio' },
+    { label: 'Memoria - Principiante', value: '/actividades/memoria-principiante' },
+    { label: 'Memoria - Avanzado', value: '/actividades/memoria-avanzada' },
+    
+    { label: 'Razonamiento - Intermedio - 1', value: '/actividades/razonamiento-intermedio' },
+    { label: 'Razonamiento - Principiante', value: '/actividades/razonamiento-principiante' },
+    { label: 'Razonamiento - Avanzado', value: '/actividades/razonamiento-avanzado' },
+    
+    { label: 'Atención - Test', value: '/actividades/atencion-test' },
+    { label: 'Atención - Principiante', value: '/actividades/atencion-principiante' },
+    { label: 'Atención - Avanzado', value: '/actividades/atencion-avanzado' },
+    ];
+
+    export default availableActivityResources;
