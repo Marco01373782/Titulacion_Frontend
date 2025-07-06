@@ -19,7 +19,8 @@ import { useNavigate } from 'react-router-dom';
 const MAX_SLOTS = 10;
 
 const SessionGrid = () => {
-  const [slots, setSlots] = useState<(any | null)[]>([]);
+  const [sessions, setSessions] = useState<any[]>([]);
+  const [slots, setSlots] = useState<(any | null)[]>(Array(MAX_SLOTS).fill(null));
   const [selectedSession, setSelectedSession] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -30,23 +31,23 @@ const SessionGrid = () => {
 
     fetchSessionsByUser(userId)
       .then(res => {
-        const sessions = Array.isArray(res) ? res : [];
+        const data = Array.isArray(res) ? res : [];
+        setSessions(data);
 
-        const completadas = sessions.filter((s: any) => s.status === 'COMPLETADA');
-        const activas = sessions.filter((s: any) => s.status === 'ACTIVA');
-        const otras = sessions.filter((s: any) => s.status !== 'ACTIVA' && s.status !== 'COMPLETADA');
+        // Organiza las sesiones en posiciones fijas (usando slot si existe o su índice)
+        const orderedSlots = Array(MAX_SLOTS).fill(null);
+        data.forEach((session: any, index: number) => {
+          const position = session.slot !== undefined ? session.slot - 1 : index;
+          if (position >= 0 && position < MAX_SLOTS) {
+            orderedSlots[position] = session;
+          }
+        });
 
-        const ordenadas = [...completadas, ...activas, ...otras];
-
-        // Rellenar con nulls si no hay suficientes sesiones
-        while (ordenadas.length < MAX_SLOTS) {
-          ordenadas.push(null);
-        }
-
-        setSlots(ordenadas.slice(0, MAX_SLOTS));
+        setSlots(orderedSlots);
       })
       .catch(e => {
         console.error('Error al obtener sesiones por usuario:', e);
+        setSessions([]);
         setSlots(Array(MAX_SLOTS).fill(null));
       });
   }, []);

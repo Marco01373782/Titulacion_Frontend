@@ -173,7 +173,7 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
                 }
             }}
         >
-            <DialogTitle sx={{ fontSize: '1rem', textAlign: 'center', mb: 2 }}>
+            <DialogTitle sx={{ fontSize: '1.2rem', textAlign: 'center', mb: 2 }}>
                 Pregunta {currentIndex + 1} de {questions.length}
             </DialogTitle>
             <DialogContent>
@@ -227,7 +227,7 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
                 >
                     Enviar respuesta
                 </Button>
-                <Typography variant="body1" color="textSecondary" textAlign="center">
+                <Typography variant="body2" color="textSecondary" textAlign="center">
                     Piensa bien tu respuesta antes de enviar 🧠
                 </Typography>
             </DialogActions>

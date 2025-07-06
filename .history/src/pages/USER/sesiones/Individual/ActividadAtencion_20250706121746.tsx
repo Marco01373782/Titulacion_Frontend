@@ -173,7 +173,7 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
                 }
             }}
         >
-            <DialogTitle sx={{ fontSize: '1rem', textAlign: 'center', mb: 2 }}>
+            <DialogTitle sx={{ fontSize: '1.5rem', textAlign: 'center', mb: 2 }}>
                 Pregunta {currentIndex + 1} de {questions.length}
             </DialogTitle>
             <DialogContent>
@@ -198,7 +198,7 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
                                 minWidth: isMobile ? '100%' : '40%',
                                 height: '60px',
                                 fontSize: '1rem',
-                                fontWeight: 800,
+                                fontWeight: 600,
                                 borderRadius: 2,
                                 textTransform: 'none',
                                 bgcolor: selectedAnswer === idx ? colorPalette[idx % colorPalette.length] : '',
@@ -227,7 +227,7 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
                 >
                     Enviar respuesta
                 </Button>
-                <Typography variant="body1" color="textSecondary" textAlign="center">
+                <Typography variant="body2" color="textSecondary" textAlign="center">
                     Piensa bien tu respuesta antes de enviar 🧠
                 </Typography>
             </DialogActions>

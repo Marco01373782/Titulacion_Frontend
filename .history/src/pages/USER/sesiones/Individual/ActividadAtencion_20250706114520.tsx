@@ -8,9 +8,7 @@ import {
     DialogTitle,
     DialogContent,
     DialogActions,
-    CircularProgress,
-    useMediaQuery,
-    useTheme,
+    CircularProgress
 } from '@mui/material';
 
 interface Props {
@@ -18,16 +16,21 @@ interface Props {
     activity: any;
 }
 
+// 🧠 Extrae el ID del video de YouTube y devuelve el embed URL
 const getEmbedUrl = (url: string): string => {
     if (!url) return '';
+
+    // Si es el formato corto tipo https://youtu.be/VIDEO_ID
     const shortMatch = url.match(/youtu\.be\/([a-zA-Z0-9_-]{11})/);
     if (shortMatch) return `https://www.youtube.com/embed/${shortMatch[1]}`;
+
+    // Si es el formato largo tipo https://www.youtube.com/watch?v=VIDEO_ID
     const longMatch = url.match(/[?&]v=([a-zA-Z0-9_-]{11})/);
     if (longMatch) return `https://www.youtube.com/embed/${longMatch[1]}`;
+
     return '';
 };
 
-const colorPalette = ['#4CAF50', '#FF9800', '#2196F3', '#E91E63'];
 
 const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
     const [videoEnded, setVideoEnded] = useState(false);
@@ -35,11 +38,7 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [score, setScore] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
-    const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
     const [showQuestion, setShowQuestion] = useState(false);
-
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     useEffect(() => {
         const fetchQuestions = async () => {
@@ -56,13 +55,8 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
         fetchQuestions();
     }, [activity.id]);
 
-    const handleSubmitAnswer = () => {
-        if (selectedAnswer === null) return;
-
-        const isCorrect = questions[currentIndex].answerOptions[selectedAnswer].isCorrect;
+    const handleAnswer = (isCorrect: boolean) => {
         if (isCorrect) setScore(prev => prev + 1);
-
-        setSelectedAnswer(null);
         setShowQuestion(false);
 
         setTimeout(() => {
@@ -87,6 +81,7 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
 
     const currentQuestion = questions[currentIndex];
     const embedUrl = getEmbedUrl(activity.resourceUrl || '');
+    console.log('🎥 URL embebida generada:', embedUrl);
 
     if (!videoEnded) {
         return (
@@ -106,37 +101,22 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
                         </Typography>
                     </Box>
                 )}
-
-                <Box
+                <Button
+                    variant="contained"
+                    onClick={() => setVideoEnded(true)}
                     sx={{
                         position: 'absolute',
                         bottom: 20,
                         right: 20,
-                        zIndex: 10,
-                        width: isMobile ? '100%' : 'auto',
-                        display: 'flex',
-                        justifyContent: isMobile ? 'center' : 'flex-end',
-                        px: isMobile ? 2 : 0,
+                        backgroundColor: 'rgba(0,0,0,0.6)',
+                        color: 'white',
+                        '&:hover': {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                        }
                     }}
                 >
-                    <Button
-                        variant="contained"
-                        onClick={() => {
-                            setVideoEnded(true);
-                            setShowQuestion(true);
-                        }}
-                        sx={{
-                            backgroundColor: 'rgba(0,0,0,0.6)',
-                            color: 'white',
-                            '&:hover': {
-                                backgroundColor: 'rgba(0,0,0,0.8)',
-                            },
-                            width: isMobile ? '100%' : 'auto'
-                        }}
-                    >
-                        Omitir video y Continuar
-                    </Button>
-                </Box>
+                    Omitir video y continuar
+                </Button>
             </Box>
         );
     }
@@ -162,73 +142,43 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
             maxWidth="md"
             PaperProps={{
                 sx: {
-                    maxHeight: '85vh',
+                    maxHeight: '80vh',
                     overflowY: 'auto',
                     bgcolor: 'white',
                     p: 3,
-                    borderRadius: 3,
+                    borderRadius: 2,
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
+                    alignItems: 'center'
                 }
             }}
         >
-            <DialogTitle sx={{ fontSize: '1rem', textAlign: 'center', mb: 2 }}>
+            <DialogTitle sx={{ fontSize: '1.6rem', textAlign: 'center' }}>
                 Pregunta {currentIndex + 1} de {questions.length}
             </DialogTitle>
             <DialogContent>
                 <Typography variant="h5" textAlign="center" gutterBottom>
                     {currentQuestion.questionText}
                 </Typography>
-
-                <Box
-                    display="flex"
-                    flexDirection={isMobile ? 'column' : 'row'}
-                    flexWrap="wrap"
-                    justifyContent="center"
-                    gap={2}
-                    mt={3}
-                >
+                <Box display="flex" flexDirection="column" gap={2} mt={2}>
                     {currentQuestion.answerOptions?.map((answer: any, idx: number) => (
                         <Button
                             key={idx}
-                            variant={selectedAnswer === idx ? 'contained' : 'outlined'}
-                            onClick={() => setSelectedAnswer(idx)}
-                            sx={{
-                                minWidth: isMobile ? '100%' : '40%',
-                                height: '60px',
-                                fontSize: '1rem',
-                                fontWeight: 800,
-                                borderRadius: 2,
-                                textTransform: 'none',
-                                bgcolor: selectedAnswer === idx ? colorPalette[idx % colorPalette.length] : '',
-                                color: selectedAnswer === idx ? 'white' : 'inherit',
-                                borderColor: colorPalette[idx % colorPalette.length],
-                                '&:hover': {
-                                    opacity: 0.9,
-                                },
-                            }}
+                            variant="contained"
+                            fullWidth
+                            size="large"
+                            color="primary"
+                            onClick={() => handleAnswer(answer.isCorrect)}
                         >
                             {answer.answerText}
                         </Button>
                     ))}
                 </Box>
             </DialogContent>
-
-            <DialogActions sx={{ flexDirection: 'column', gap: 2, mt: 2 }}>
-                <Button
-                    variant="contained"
-                    size="large"
-                    color="primary"
-                    disabled={selectedAnswer === null}
-                    onClick={handleSubmitAnswer}
-                    fullWidth
-                    sx={{ py: 1.5, fontWeight: 700 }}
-                >
-                    Enviar respuesta
-                </Button>
-                <Typography variant="body1" color="textSecondary" textAlign="center">
-                    Piensa bien tu respuesta antes de enviar 🧠
+            <DialogActions>
+                <Typography variant="body2" color="textSecondary" sx={{ mx: 'auto' }}>
+                    Responde con calma y concentración 💡
                 </Typography>
             </DialogActions>
         </Dialog>

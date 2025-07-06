@@ -11,6 +11,7 @@ import {
     CircularProgress,
     useMediaQuery,
     useTheme,
+    Paper
 } from '@mui/material';
 
 interface Props {
@@ -27,7 +28,7 @@ const getEmbedUrl = (url: string): string => {
     return '';
 };
 
-const colorPalette = ['#4CAF50', '#FF9800', '#2196F3', '#E91E63'];
+const colorPalette = ['#4CAF50', '#FF9800', '#03A9F4', '#E91E63', '#9C27B0', '#F44336'];
 
 const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
     const [videoEnded, setVideoEnded] = useState(false);
@@ -39,7 +40,7 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
     const [showQuestion, setShowQuestion] = useState(false);
 
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 
     useEffect(() => {
         const fetchQuestions = async () => {
@@ -58,7 +59,6 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
 
     const handleSubmitAnswer = () => {
         if (selectedAnswer === null) return;
-
         const isCorrect = questions[currentIndex].answerOptions[selectedAnswer].isCorrect;
         if (isCorrect) setScore(prev => prev + 1);
 
@@ -74,7 +74,7 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
                 const finalScore = Math.round(((score + (isCorrect ? 1 : 0)) / total) * 100);
                 onFinish(finalScore);
             }
-        }, 400);
+        }, 500);
     };
 
     if (isLoading) {
@@ -106,37 +106,25 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
                         </Typography>
                     </Box>
                 )}
-
-                <Box
+                <Button
+                    variant="contained"
+                    onClick={() => {
+                        setVideoEnded(true);
+                        setShowQuestion(true);
+                    }}
                     sx={{
                         position: 'absolute',
                         bottom: 20,
                         right: 20,
-                        zIndex: 10,
-                        width: isMobile ? '100%' : 'auto',
-                        display: 'flex',
-                        justifyContent: isMobile ? 'center' : 'flex-end',
-                        px: isMobile ? 2 : 0,
+                        backgroundColor: 'rgba(0,0,0,0.6)',
+                        color: 'white',
+                        '&:hover': {
+                            backgroundColor: 'rgba(0,0,0,0.8)',
+                        }
                     }}
                 >
-                    <Button
-                        variant="contained"
-                        onClick={() => {
-                            setVideoEnded(true);
-                            setShowQuestion(true);
-                        }}
-                        sx={{
-                            backgroundColor: 'rgba(0,0,0,0.6)',
-                            color: 'white',
-                            '&:hover': {
-                                backgroundColor: 'rgba(0,0,0,0.8)',
-                            },
-                            width: isMobile ? '100%' : 'auto'
-                        }}
-                    >
-                        Omitir video y Continuar
-                    </Button>
-                </Box>
+                    Omitir video y Continuar
+                </Button>
             </Box>
         );
     }
@@ -156,66 +144,72 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
 
     return (
         <Dialog
-            open={showQuestion || currentIndex === 0}
-            onClose={() => { }}
+            open={showQuestion}
+            fullScreen={fullScreen}
+            maxWidth="lg"
             fullWidth
-            maxWidth="md"
             PaperProps={{
                 sx: {
-                    maxHeight: '85vh',
-                    overflowY: 'auto',
                     bgcolor: 'white',
-                    p: 3,
+                    p: 4,
                     borderRadius: 3,
+                    minHeight: fullScreen ? '100%' : 'auto',
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'center',
+                    justifyContent: 'space-between',
                 }
             }}
         >
-            <DialogTitle sx={{ fontSize: '1rem', textAlign: 'center', mb: 2 }}>
+            <DialogTitle sx={{ textAlign: 'center', fontSize: '2rem', fontWeight: 700, mb: 2 }}>
                 Pregunta {currentIndex + 1} de {questions.length}
             </DialogTitle>
-            <DialogContent>
-                <Typography variant="h5" textAlign="center" gutterBottom>
-                    {currentQuestion.questionText}
-                </Typography>
 
+            <DialogContent>
                 <Box
-                    display="flex"
-                    flexDirection={isMobile ? 'column' : 'row'}
-                    flexWrap="wrap"
-                    justifyContent="center"
-                    gap={2}
-                    mt={3}
+                    sx={{
+                        p: 3,
+                        bgcolor: '#f7f7f7',
+                        borderRadius: 3,
+                        boxShadow: 3,
+                        maxWidth: '900px',
+                        mx: 'auto',
+                        mb: 4,
+                        textAlign: 'center'
+                    }}
                 >
-                    {currentQuestion.answerOptions?.map((answer: any, idx: number) => (
-                        <Button
-                            key={idx}
-                            variant={selectedAnswer === idx ? 'contained' : 'outlined'}
-                            onClick={() => setSelectedAnswer(idx)}
-                            sx={{
-                                minWidth: isMobile ? '100%' : '40%',
-                                height: '60px',
-                                fontSize: '1rem',
-                                fontWeight: 800,
-                                borderRadius: 2,
-                                textTransform: 'none',
-                                bgcolor: selectedAnswer === idx ? colorPalette[idx % colorPalette.length] : '',
-                                color: selectedAnswer === idx ? 'white' : 'inherit',
-                                borderColor: colorPalette[idx % colorPalette.length],
-                                '&:hover': {
-                                    opacity: 0.9,
-                                },
-                            }}
-                        >
-                            {answer.answerText}
-                        </Button>
-                    ))}
+                    <Typography variant="h5" sx={{ mb: 2, fontWeight: 600 }}>
+                        {currentQuestion.questionText}
+                    </Typography>
+
+                    <Box display="flex" flexDirection="column" gap={2} mt={3}>
+                        {currentQuestion.answerOptions?.map((answer: any, idx: number) => (
+                            <Paper
+                                key={idx}
+                                elevation={selectedAnswer === idx ? 6 : 2}
+                                onClick={() => setSelectedAnswer(idx)}
+                                sx={{
+                                    cursor: 'pointer',
+                                    p: 2,
+                                    borderRadius: 2,
+                                    textAlign: 'center',
+                                    fontSize: '1.1rem',
+                                    fontWeight: 600,
+                                    color: '#fff',
+                                    backgroundColor: selectedAnswer === idx ? '#000' : colorPalette[idx % colorPalette.length],
+                                    transition: '0.2s',
+                                    '&:hover': {
+                                        opacity: 0.85,
+                                    }
+                                }}
+                            >
+                                {answer.answerText}
+                            </Paper>
+                        ))}
+                    </Box>
                 </Box>
             </DialogContent>
 
-            <DialogActions sx={{ flexDirection: 'column', gap: 2, mt: 2 }}>
+            <DialogActions sx={{ flexDirection: 'column', gap: 2 }}>
                 <Button
                     variant="contained"
                     size="large"
@@ -227,8 +221,8 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
                 >
                     Enviar respuesta
                 </Button>
-                <Typography variant="body1" color="textSecondary" textAlign="center">
-                    Piensa bien tu respuesta antes de enviar 🧠
+                <Typography variant="body2" color="textSecondary">
+                    Tómate tu tiempo y responde con calma 🧘‍♂️
                 </Typography>
             </DialogActions>
         </Dialog>

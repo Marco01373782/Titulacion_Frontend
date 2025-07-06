@@ -19,7 +19,7 @@ import { useNavigate } from 'react-router-dom';
 const MAX_SLOTS = 10;
 
 const SessionGrid = () => {
-  const [slots, setSlots] = useState<(any | null)[]>([]);
+  const [sessions, setSessions] = useState<any[]>([]);
   const [selectedSession, setSelectedSession] = useState<any | null>(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -30,24 +30,12 @@ const SessionGrid = () => {
 
     fetchSessionsByUser(userId)
       .then(res => {
-        const sessions = Array.isArray(res) ? res : [];
-
-        const completadas = sessions.filter((s: any) => s.status === 'COMPLETADA');
-        const activas = sessions.filter((s: any) => s.status === 'ACTIVA');
-        const otras = sessions.filter((s: any) => s.status !== 'ACTIVA' && s.status !== 'COMPLETADA');
-
-        const ordenadas = [...completadas, ...activas, ...otras];
-
-        // Rellenar con nulls si no hay suficientes sesiones
-        while (ordenadas.length < MAX_SLOTS) {
-          ordenadas.push(null);
-        }
-
-        setSlots(ordenadas.slice(0, MAX_SLOTS));
+        const data = Array.isArray(res) ? res : [];
+        setSessions(data);
       })
       .catch(e => {
         console.error('Error al obtener sesiones por usuario:', e);
-        setSlots(Array(MAX_SLOTS).fill(null));
+        setSessions([]);
       });
   }, []);
 
@@ -75,6 +63,12 @@ const SessionGrid = () => {
     }
   };
 
+  const totalSlots = MAX_SLOTS;
+  const slots = [...sessions];
+  while (slots.length < totalSlots) {
+    slots.push(null);
+  }
+
   return (
     <Box sx={{ width: '100%', height: '100%', p: 2, bgcolor: '#f4f5fa', boxSizing: 'border-box' }}>
       <Paper elevation={3} sx={{ height: '100%', p: 3, display: 'flex', flexDirection: 'column' }}>
@@ -82,7 +76,7 @@ const SessionGrid = () => {
           🧠 Sesiones Diarias
         </Typography>
 
-        <Typography variant="subtitle1" sx={{ mb: 3, textAlign: 'center', color: '#555' }}>
+        <Typography variant="subtitle1" fontWeight={600} sx={{ mb: 3, textAlign: 'center', color: '#555' }}>
           Cada día es una oportunidad para fortalecer tu mente. ¡Haz clic en una sesión activa y comienza!
         </Typography>
 
@@ -104,7 +98,7 @@ const SessionGrid = () => {
                       fontWeight: 600,
                       opacity: 0.4,
                     }}>
-                    {idx + 1}
+                    {idx + }
                   </Paper>
                 );
               } else {

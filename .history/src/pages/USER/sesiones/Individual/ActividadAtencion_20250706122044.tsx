@@ -173,11 +173,11 @@ const ActividadAtencion: React.FC<Props> = ({ onFinish, activity }) => {
                 }
             }}
         >
-            <DialogTitle sx={{ fontSize: '1rem', textAlign: 'center', mb: 2 }}>
+            <DialogTitle sx={{ fontSize: '1.2rem', textAlign: 'center', mb: 2 }}>
                 Pregunta {currentIndex + 1} de {questions.length}
             </DialogTitle>
             <DialogContent>
-                <Typography variant="h5" textAlign="center" gutterBottom>
+                <Typography variant="h" textAlign="center" gutterBottom>
                     {currentQuestion.questionText}
                 </Typography>
 
