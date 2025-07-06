@@ -1,0 +1,90 @@
+.actividad-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #e0f7fa, #fff1f0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.actividad-contenedor {
+  width: 100%;
+  max-width: 700px;
+  padding: 2rem;
+  border-radius: 20px;
+  background-color: #ffffff;
+  text-align: center;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.titulo {
+  color: #34495e;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.instrucciones {
+  background-color: #dfe6e9;
+  color: #2d3436;
+  padding: 1rem;
+  border-radius: 10px;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.secuencia-mostrada {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.numero-card {
+  width: 70px;
+  height: 70px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #2d3436;
+  background-color: #ffeaa7;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+.numero-card.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.botones-numeros {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.numero-btn {
+  font-size: 1.5rem !important;
+  font-weight: bold !important;
+  padding: 1rem 1.5rem !important;
+  min-width: 80px;
+  border-radius: 12px !important;
+}
+
+.mensaje {
+  margin-top: 2rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #2d3436;
+}

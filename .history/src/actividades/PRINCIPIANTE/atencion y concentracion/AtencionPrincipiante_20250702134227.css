@@ -1,0 +1,98 @@
+.actividad-wrapper {
+  width: 100vw;
+  height: 100%;
+  background: linear-gradient(135deg, #fefcea, #f1da36);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.actividad-contenedor {
+    margin-right: 50px;
+  width: 100%;
+  max-width: 800px;
+  padding: 2rem;
+  border-radius: 20px;
+  background-color: #ffffff;
+  text-align: center;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.titulo {
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.instrucciones {
+  background-color: #FFF3CD;
+  color: #856404;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.secuencia-mostrada {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+.numero-card {
+  background-color: #3498db;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  transition: transform 0.3s;
+  min-width: 60px;
+}
+
+.visible {
+  animation: popIn 0.3s ease-in-out;
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.botones-numeros {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.numero-btn {
+  font-size: 1.5rem !important;
+  padding: 0.8rem 1.5rem !important;
+  min-width: 60px;
+  border-radius: 12px !important;
+  background-color: #2ecc71 !important;
+  color: white;
+}
+
+.numero-btn:hover {
+  background-color: #27ae60 !important;
+  transform: scale(1.05);
+}
+
+.mensaje {
+  margin-top: 2rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #333;
+}

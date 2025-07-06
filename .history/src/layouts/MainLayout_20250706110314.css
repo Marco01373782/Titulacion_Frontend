@@ -1,0 +1,111 @@
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* Header ocupa 7vh */
+.main-layout > *:first-child {
+  height: 7vh;
+  min-height: 40px;
+}
+
+/* Body layout con sidebar + contenido */
+.layout-body {
+  display: flex;
+  height: 92vh;
+  transition: all 0.3s ease;
+}
+
+/* Sidebar normal */
+.sidebar {
+  width: 220px;
+  min-width: 190px;
+  max-width: 220px;
+  transition: transform 0.3s ease-in-out;
+  height: 100vh;
+  position: relative;
+  z-index: 10;
+}
+
+/* Contenido toma todo espacio restante */
+.layout-content {
+  flex: 1;
+  padding: 0.5rem;
+  overflow-y: auto;
+  position: relative;
+}
+
+/* Botón fijo para toggle fullscreen */
+.btn-fullscreen-toggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  transition: background-color 0.2s ease;
+}
+.btn-fullscreen-toggle:hover {
+  background-color: #0056b3;
+}
+
+/* MOBILE: Sidebar oculto por defecto y aparece con transform */
+@media (max-width: 768px) {
+  .layout-body {
+    position: relative;
+  }
+  .sidebar {
+    position: fixed;
+    top: 7vh;
+    left: 0;
+    height: calc(100vh - 7vh);
+    background: #f2f2f2;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+    transform: translateX(-100%);
+  }
+  .layout-body.sidebar-open .sidebar {
+    transform: translateX(0);
+  }
+  .layout-content {
+    flex: 1;
+    padding: 0.3rem;
+    position: relative;
+    z-index: 1;
+  }
+}
+
+/* Desktop: espacio para sidebar */
+@media (min-width: 769px) {
+  .layout-body {
+    padding-left: 250px; /* ancho del sidebar fijo */
+  }
+}
+
+/* MODO FULLSCREEN */
+/* Ocultamos sidebar y header, cuerpo ocupa toda la pantalla */
+.main-layout.fullscreen > *:first-child {
+  display: none; /* Header oculto */
+}
+
+.layout-body.fullscreen-body {
+  padding-left: 0 !important;
+  height: 100vh !important;
+}
+
+.layout-body.fullscreen-body .sidebar {
+  display: none !important;
+}
+
+.layout-body.fullscreen-body .layout-content {
+  flex: 1;
+  height: 100vh;
+  padding: 1rem;
+  overflow-y: auto;
+}

@@ -1,0 +1,123 @@
+.actividad-wrapper {
+  width: 100vw;
+  height: 100%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.actividad-contenedor {
+  width: 100%;
+  max-width: 600px;
+  min-height: 500px;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  background-color: #9ef3ec;
+  text-align: center;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.titulo {
+  color: #007acc;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.instrucciones {
+  background-color: #FFF3CD;
+  color: #856404;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.pregunta {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin: 1.2rem 0;
+  color: #333;
+}
+
+.tiempo {
+  font-size: 1.3rem;
+  color: #d9534f;
+  font-weight: bold;
+  margin-bottom: 1.8rem;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  width: 100%;
+}
+
+.input {
+  width: 80%;
+  font-size: 2rem !important;
+}
+
+.input input {
+  font-size: 2rem !important;
+  text-align: center;
+  padding: 0.8rem;
+}
+
+.boton {
+  border-radius: 12px !important;
+  font-size: 1.6rem !important;
+  padding: 0.8rem 2.4rem !important;
+}
+
+.mensaje {
+  margin-top: 1.5rem;
+  font-weight: bold;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.resultado-final {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #e3f2fd;
+  border-radius: 12px;
+  border: 1px solid #90caf9;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+
+/* 📱 Estilos para pantallas chicas */
+@media (max-width: 600px) {
+  .actividad-contenedor {
+    padding: 2rem 1rem;
+    min-height: 460px;
+  }
+
+  .pregunta {
+    font-size: 2.6rem;
+  }
+
+  .input input {
+    font-size: 1.8rem !important;
+    padding: 0.6rem;
+  }
+
+  .boton {
+    font-size: 1.4rem !important;
+    padding: 0.6rem 2rem !important;
+  }
+
+  .mensaje,
+  .resultado-final {
+    font-size: 1.2rem;
+  }
+}
