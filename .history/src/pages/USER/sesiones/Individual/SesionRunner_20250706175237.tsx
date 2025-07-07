@@ -86,13 +86,10 @@ const SesionRunner: React.FC = () => {
         const activity = wrapper.activity || wrapper;
         const completedAt = end.toISOString().split('.')[0];
 
-        // Normalizar score a 0-100 (según tu escala real)
-        const normalizedScore = score !== null ? Math.min(100, Math.max(0, score)) : null;
-
         const payload = {
             sesionUsuarioId,
             activityId: Number(activity.id),
-            result: normalizedScore,
+            result: score !== null ? Number(score) : null,
             completedAt,
             durationSeconds,
         };
@@ -100,8 +97,8 @@ const SesionRunner: React.FC = () => {
         try {
             await saveSessionActivityResult(payload);
             setDurations(prev => [...prev, durationSeconds]);
-            if (normalizedScore !== null) setScores(prev => [...prev, normalizedScore]);
-            setActivityScore(normalizedScore);
+            if (score !== null) setScores(prev => [...prev, score]);
+            setActivityScore(score);
             setShowResultModal(true);
         } catch (e) {
             console.error('❌ Error al guardar resultado:', e);
@@ -109,48 +106,47 @@ const SesionRunner: React.FC = () => {
     };
 
     const handleNext = async () => {
-        setShowResultModal(false);
-        if (currentIndex < activities.length - 1) {
-            setCurrentIndex(prev => prev + 1);
-        } else {
-            const totalDuration = durations.reduce((acc, cur) => acc + cur, 0);
+    setShowResultModal(false);
+    if (currentIndex < activities.length - 1) {
+        setCurrentIndex(prev => prev + 1);
+    } else {
+        const totalDuration = durations.reduce((acc, cur) => acc + cur, 0);
 
-            // En vez de calcular localmente, llama al backend
-            let activitiesResultAverage = null;
-            try {
-                const backendAverage = await getAverageForSessionAndUser(session.id, userId);
-                activitiesResultAverage = backendAverage ? Number(backendAverage) : null;
-            } catch (e) {
-                console.error('Error obteniendo promedio backend:', e);
-                // fallback local simple (solo si backend falla)
-                activitiesResultAverage = scores.length > 0
-                    ? Math.min(100, parseFloat((scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2)))
-                    : null;
-            }
-
-            const endedAt = new Date().toISOString().split('.')[0];
-            const mode = localStorage.getItem('selectedMode') || 'INDIVIDUAL';
-
-            try {
-                const existingSession = await getSesionUsuarioById(sesionUsuarioId);
-                const updatedPayload = {
-                    ...existingSession,
-                    status: 'COMPLETADA',
-                    endedAt,
-                    sessionDurationSeconds: totalDuration,
-                    result: activitiesResultAverage,
-                    mode,
-                    startedAt: existingSession.startedAt || new Date().toISOString().split('.')[0],
-                    date: existingSession.date || new Date().toISOString().split('T')[0]
-                };
-                await updateSesionUsuario(sesionUsuarioId, updatedPayload);
-                navigate('/user/Sesiones');
-            } catch (error) {
-                alert('❌ No se pudo completar la sesión.');
-            }
+        // Pedir promedio al backend usando session.id y userId
+        let activitiesResultAverage = null;
+        try {
+            const response = await getAverageForSessionAndUser(session.id, userId);
+            activitiesResultAverage = response.data; // asumiendo decimal ya calculado
+        } catch (error) {
+            console.error('Error calculando promedio desde backend, usando promedio local');
+            // fallback a promedio local:
+            activitiesResultAverage = scores.length > 0
+                ? Math.min(100, parseFloat((scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2)))
+                : null;
         }
-    };
 
+        const endedAt = new Date().toISOString().split('.')[0];
+        const mode = localStorage.getItem('selectedMode') || 'INDIVIDUAL';
+
+        try {
+            const existingSession = await getSesionUsuarioById(sesionUsuarioId);
+            const updatedPayload = {
+                ...existingSession,
+                status: 'COMPLETADA',
+                endedAt,
+                sessionDurationSeconds: totalDuration,
+                result: activitiesResultAverage,
+                mode,
+                startedAt: existingSession.startedAt || new Date().toISOString().split('.')[0],
+                date: existingSession.date || new Date().toISOString().split('T')[0]
+            };
+            await updateSesionUsuario(sesionUsuarioId, updatedPayload);
+            navigate('/user/Sesiones');
+        } catch (error) {
+            alert('❌ No se pudo completar la sesión.');
+        }
+    }
+};
 
     if (isLoading) return (
         <Box sx={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -168,18 +164,18 @@ const SesionRunner: React.FC = () => {
     const activity = wrapper.activity || wrapper;
     const resourceUrl = activity.resourceUrl;
     const ActivityComponent = activity.type === 'ATENCION'
-        ? ActividadAtencion
-        : activityComponentsMap[resourceUrl];
+            ? ActividadAtencion
+            : activityComponentsMap[resourceUrl];
 
 
     if (!ActivityComponent) return (
-        <Box sx={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Box sx={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <Typography variant="h5">No se encontró el componente para: {resourceUrl}</Typography>
         </Box>
     );
 
     return (
-        <Box sx={{ width: '100%', height: '89vh', position: 'relative', bgcolor: '' }}>
+        <Box sx={{ width: '100%', height: '89vh',position: 'relative', bgcolor: ''}}>
             <Button
                 variant="outlined"
                 color="secondary"
@@ -190,7 +186,7 @@ const SesionRunner: React.FC = () => {
                 {isMusicPlaying ? 'Silencio' : 'Música'}
             </Button>
 
-            <Paper elevation={3} sx={{ width: '100%', height: '100%', p: 0.8, boxSizing: 'border-box', display: 'flex', flexDirection: 'column', bgcolor: '#f0f1b9' }}>
+            <Paper elevation={3} sx={{ width: '100%', height: '100%', p: 0.8, boxSizing: 'border-box', display: 'flex', flexDirection: 'column', bgcolor: '#f0f1b9'}}>
                 <Typography variant="h5" sx={{ mb: 2 }}>
                     Sesión: {session?.title} | Actividad {currentIndex + 1} de {activities.length}
                 </Typography>

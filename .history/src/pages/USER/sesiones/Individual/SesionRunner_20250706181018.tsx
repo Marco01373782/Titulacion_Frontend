@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { saveSessionActivityResult, updateSesionUsuario, getSesionUsuarioById } from '../../../../services/ApiService';
 import activityComponentsMap from '../activityComponentsMap';
-import { getAverageForSessionAndUser } from '../../../../services/ApiService';
 import {
     Box, Paper, Typography, CircularProgress, Button, Dialog,
     DialogTitle, DialogContent, DialogActions
@@ -26,7 +25,7 @@ const SesionRunner: React.FC = () => {
     const [activityScore, setActivityScore] = useState<number | null>(null);
     const [startTime, setStartTime] = useState<Date | null>(null);
     const [durations, setDurations] = useState<number[]>([]);
-    const [scores, setScores] = useState<number[]>([]);
+    const [     scores, setScores] = useState<number[]>([]);
     const [showResultModal, setShowResultModal] = useState(false);
     const [showInstructionsModal, setShowInstructionsModal] = useState(true);
     const [isMusicPlaying, setIsMusicPlaying] = useState(true);
@@ -86,13 +85,10 @@ const SesionRunner: React.FC = () => {
         const activity = wrapper.activity || wrapper;
         const completedAt = end.toISOString().split('.')[0];
 
-        // Normalizar score a 0-100 (según tu escala real)
-        const normalizedScore = score !== null ? Math.min(100, Math.max(0, score)) : null;
-
         const payload = {
             sesionUsuarioId,
             activityId: Number(activity.id),
-            result: normalizedScore,
+            result: score !== null ? Number(score) : null,
             completedAt,
             durationSeconds,
         };
@@ -100,8 +96,8 @@ const SesionRunner: React.FC = () => {
         try {
             await saveSessionActivityResult(payload);
             setDurations(prev => [...prev, durationSeconds]);
-            if (normalizedScore !== null) setScores(prev => [...prev, normalizedScore]);
-            setActivityScore(normalizedScore);
+            if (score !== null) setScores(prev => [...prev, score]);
+            setActivityScore(score);
             setShowResultModal(true);
         } catch (e) {
             console.error('❌ Error al guardar resultado:', e);
@@ -114,19 +110,10 @@ const SesionRunner: React.FC = () => {
             setCurrentIndex(prev => prev + 1);
         } else {
             const totalDuration = durations.reduce((acc, cur) => acc + cur, 0);
+            const activitiesResultAverage = scores.length > 0
+                ? Math.min(100, parseFloat((scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2)))
+                : null;
 
-            // En vez de calcular localmente, llama al backend
-            let activitiesResultAverage = null;
-            try {
-                const backendAverage = await getAverageForSessionAndUser(session.id, userId);
-                activitiesResultAverage = backendAverage ? Number(backendAverage) : null;
-            } catch (e) {
-                console.error('Error obteniendo promedio backend:', e);
-                // fallback local simple (solo si backend falla)
-                activitiesResultAverage = scores.length > 0
-                    ? Math.min(100, parseFloat((scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2)))
-                    : null;
-            }
 
             const endedAt = new Date().toISOString().split('.')[0];
             const mode = localStorage.getItem('selectedMode') || 'INDIVIDUAL';
@@ -151,7 +138,6 @@ const SesionRunner: React.FC = () => {
         }
     };
 
-
     if (isLoading) return (
         <Box sx={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
             <CircularProgress />
@@ -168,18 +154,18 @@ const SesionRunner: React.FC = () => {
     const activity = wrapper.activity || wrapper;
     const resourceUrl = activity.resourceUrl;
     const ActivityComponent = activity.type === 'ATENCION'
-        ? ActividadAtencion
-        : activityComponentsMap[resourceUrl];
+            ? ActividadAtencion
+            : activityComponentsMap[resourceUrl];
 
 
     if (!ActivityComponent) return (
-        <Box sx={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Box sx={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
             <Typography variant="h5">No se encontró el componente para: {resourceUrl}</Typography>
         </Box>
     );
 
     return (
-        <Box sx={{ width: '100%', height: '89vh', position: 'relative', bgcolor: '' }}>
+        <Box sx={{ width: '100%', height: '89vh',position: 'relative', bgcolor: ''}}>
             <Button
                 variant="outlined"
                 color="secondary"
@@ -190,7 +176,7 @@ const SesionRunner: React.FC = () => {
                 {isMusicPlaying ? 'Silencio' : 'Música'}
             </Button>
 
-            <Paper elevation={3} sx={{ width: '100%', height: '100%', p: 0.8, boxSizing: 'border-box', display: 'flex', flexDirection: 'column', bgcolor: '#f0f1b9' }}>
+            <Paper elevation={3} sx={{ width: '100%', height: '100%', p: 0.8, boxSizing: 'border-box', display: 'flex', flexDirection: 'column', bgcolor: '#f0f1b9'}}>
                 <Typography variant="h5" sx={{ mb: 2 }}>
                     Sesión: {session?.title} | Actividad {currentIndex + 1} de {activities.length}
                 </Typography>

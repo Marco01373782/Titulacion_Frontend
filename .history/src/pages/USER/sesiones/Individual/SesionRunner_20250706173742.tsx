@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { saveSessionActivityResult, updateSesionUsuario, getSesionUsuarioById } from '../../../../services/ApiService';
 import activityComponentsMap from '../activityComponentsMap';
 import { getAverageForSessionAndUser } from '../../../../services/ApiService';
+
 import {
     Box, Paper, Typography, CircularProgress, Button, Dialog,
     DialogTitle, DialogContent, DialogActions
@@ -26,7 +27,7 @@ const SesionRunner: React.FC = () => {
     const [activityScore, setActivityScore] = useState<number | null>(null);
     const [startTime, setStartTime] = useState<Date | null>(null);
     const [durations, setDurations] = useState<number[]>([]);
-    const [scores, setScores] = useState<number[]>([]);
+
     const [showResultModal, setShowResultModal] = useState(false);
     const [showInstructionsModal, setShowInstructionsModal] = useState(true);
     const [isMusicPlaying, setIsMusicPlaying] = useState(true);
@@ -86,13 +87,10 @@ const SesionRunner: React.FC = () => {
         const activity = wrapper.activity || wrapper;
         const completedAt = end.toISOString().split('.')[0];
 
-        // Normalizar score a 0-100 (según tu escala real)
-        const normalizedScore = score !== null ? Math.min(100, Math.max(0, score)) : null;
-
         const payload = {
             sesionUsuarioId,
             activityId: Number(activity.id),
-            result: normalizedScore,
+            result: score !== null ? Number(score) : null,
             completedAt,
             durationSeconds,
         };
@@ -100,56 +98,72 @@ const SesionRunner: React.FC = () => {
         try {
             await saveSessionActivityResult(payload);
             setDurations(prev => [...prev, durationSeconds]);
-            if (normalizedScore !== null) setScores(prev => [...prev, normalizedScore]);
-            setActivityScore(normalizedScore);
+
+            setActivityScore(score);
             setShowResultModal(true);
         } catch (e) {
             console.error('❌ Error al guardar resultado:', e);
         }
     };
-
     const handleNext = async () => {
         setShowResultModal(false);
         if (currentIndex < activities.length - 1) {
             setCurrentIndex(prev => prev + 1);
         } else {
-            const totalDuration = durations.reduce((acc, cur) => acc + cur, 0);
+            setTimeout(async () => {
+                try {
+                    const sesionUsuario = await getSesionUsuarioById(sesionUsuarioId);
+                    if (!sesionUsuario || (!sesionUsuario.sesionId && !session?.id)) {
+  throw new Error("❌ No se puede determinar el ID de la sesión");
+}
 
-            // En vez de calcular localmente, llama al backend
-            let activitiesResultAverage = null;
-            try {
-                const backendAverage = await getAverageForSessionAndUser(session.id, userId);
-                activitiesResultAverage = backendAverage ? Number(backendAverage) : null;
-            } catch (e) {
-                console.error('Error obteniendo promedio backend:', e);
-                // fallback local simple (solo si backend falla)
-                activitiesResultAverage = scores.length > 0
-                    ? Math.min(100, parseFloat((scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2)))
-                    : null;
-            }
+                    const sessionId = sesionUsuario.sesionId || session.id;
 
-            const endedAt = new Date().toISOString().split('.')[0];
-            const mode = localStorage.getItem('selectedMode') || 'INDIVIDUAL';
 
-            try {
-                const existingSession = await getSesionUsuarioById(sesionUsuarioId);
-                const updatedPayload = {
-                    ...existingSession,
-                    status: 'COMPLETADA',
-                    endedAt,
-                    sessionDurationSeconds: totalDuration,
-                    result: activitiesResultAverage,
-                    mode,
-                    startedAt: existingSession.startedAt || new Date().toISOString().split('.')[0],
-                    date: existingSession.date || new Date().toISOString().split('T')[0]
-                };
-                await updateSesionUsuario(sesionUsuarioId, updatedPayload);
-                navigate('/user/Sesiones');
-            } catch (error) {
-                alert('❌ No se pudo completar la sesión.');
-            }
+                    const averageResponse = await getAverageForSessionAndUser(sessionId, userId);
+
+                    const activitiesResultAverage = averageResponse.data * 10;
+
+                    console.log("✅ Promedio calculado después del delay:", activitiesResultAverage);
+
+                    const totalDuration = durations.reduce((acc, cur) => acc + cur, 0);
+                    const endedAt = new Date().toISOString().split('.')[0];
+                    const mode = localStorage.getItem('selectedMode') || 'INDIVIDUAL';
+
+                    const existingSession = await getSesionUsuarioById(sesionUsuarioId);
+
+                    const updatedPayload = {
+                        id: existingSession.id,
+                        sesionId: existingSession.sesion.id,
+                        userId: existingSession.user.id,
+                        status: 'COMPLETADA',
+                        endedAt,
+                        sessionDurationSeconds: totalDuration,
+                        result: activitiesResultAverage,
+                        mode,
+                        startedAt: existingSession.startedAt || new Date().toISOString().split('.')[0],
+                        date: existingSession.date || new Date().toISOString().split('T')[0]
+                    };
+                    console.log("🔎 session.id:", session?.id);
+                    console.log("🧠 userId:", userId);
+                    console.log("🧾 Payload que se va a guardar en la sesión:");
+                        console.log("Sesión ID:", sessionId);
+                        console.log("Promedio:", activitiesResultAverage);
+                        console.log("Duración:", totalDuration);
+                        console.log("Payload:", updatedPayload);
+
+                    await updateSesionUsuario(sesionUsuarioId, updatedPayload);
+                    navigate('/user/Sesiones');
+
+                } catch (error) {
+                    console.error('❌ Error al calcular promedio y cerrar sesión:', error);
+                    alert('❌ No se pudo completar la sesión.');
+                }
+            }, 500); // Pequeño delay por si el backend tarda en registrar resultados
         }
     };
+
+
 
 
     if (isLoading) return (

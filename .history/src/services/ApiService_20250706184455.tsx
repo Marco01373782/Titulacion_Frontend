@@ -230,6 +230,6 @@ export const getResultadosActividadPorSesionYUsuario = (
 };
 
 export const getAverageForSessionAndUser = (sessionId: number, userId: number) =>
-  ApiService.get(`/session-activity-results/average?sessionId=${sessionId}&userId=${userId}`);
+  api.get(`/session-activity-results/average?sessionId=${sessionId}&userId=${userId}`);
 
 export default ApiService;

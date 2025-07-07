@@ -6,7 +6,7 @@
             saveSessionActivityResult,
             updateSesionUsuario,
             getSesionUsuarioById
-        } from '../../../services/ApiService';
+        } from '../
         import activityComponentsMap from '../activityComponentsMap';
 
         const SesionRunner: React.FC = () => {

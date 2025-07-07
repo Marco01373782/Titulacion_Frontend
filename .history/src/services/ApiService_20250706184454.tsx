@@ -206,6 +206,8 @@ export const fetchActivitiesBySession = async (sessionId: number) => {
 export const saveSessionActivityResult = (data: any): Promise<AxiosResponse> => {
   return ApiService.post('/session-activity-results', data);
 };
+
+
 export const postSessionActivityResult = (data: any): Promise<AxiosResponse> => {
   return ApiService.post('/session-activity-results', data);
 };
@@ -230,6 +232,6 @@ export const getResultadosActividadPorSesionYUsuario = (
 };
 
 export const getAverageForSessionAndUser = (sessionId: number, userId: number) =>
-  ApiService.get(`/session-activity-results/average?sessionId=${sessionId}&userId=${userId}`);
+  api.get(`/session-activity-results/average?sessionId=${sessionId}&userId=${userId}`);
 
 export default ApiService;

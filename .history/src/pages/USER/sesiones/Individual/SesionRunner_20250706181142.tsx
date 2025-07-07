@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { saveSessionActivityResult, updateSesionUsuario, getSesionUsuarioById } from '../../../../services/ApiService';
 import activityComponentsMap from '../activityComponentsMap';
-import { getAverageForSessionAndUser } from '../../../../services/ApiService';
+import 
 import {
     Box, Paper, Typography, CircularProgress, Button, Dialog,
     DialogTitle, DialogContent, DialogActions

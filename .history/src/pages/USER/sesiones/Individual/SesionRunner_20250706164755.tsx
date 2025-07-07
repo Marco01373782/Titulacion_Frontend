@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { saveSessionActivityResult, updateSesionUsuario, getSesionUsuarioById } from '../../../../services/ApiService';
 import activityComponentsMap from '../activityComponentsMap';
 import { getAverageForSessionAndUser } from '../../../../services/ApiService';
+
 import {
     Box, Paper, Typography, CircularProgress, Button, Dialog,
     DialogTitle, DialogContent, DialogActions
@@ -26,7 +27,7 @@ const SesionRunner: React.FC = () => {
     const [activityScore, setActivityScore] = useState<number | null>(null);
     const [startTime, setStartTime] = useState<Date | null>(null);
     const [durations, setDurations] = useState<number[]>([]);
-    const [scores, setScores] = useState<number[]>([]);
+
     const [showResultModal, setShowResultModal] = useState(false);
     const [showInstructionsModal, setShowInstructionsModal] = useState(true);
     const [isMusicPlaying, setIsMusicPlaying] = useState(true);
@@ -86,13 +87,10 @@ const SesionRunner: React.FC = () => {
         const activity = wrapper.activity || wrapper;
         const completedAt = end.toISOString().split('.')[0];
 
-        // Normalizar score a 0-100 (según tu escala real)
-        const normalizedScore = score !== null ? Math.min(100, Math.max(0, score)) : null;
-
         const payload = {
             sesionUsuarioId,
             activityId: Number(activity.id),
-            result: normalizedScore,
+            result: score !== null ? Number(score) : null,
             completedAt,
             durationSeconds,
         };
@@ -100,41 +98,35 @@ const SesionRunner: React.FC = () => {
         try {
             await saveSessionActivityResult(payload);
             setDurations(prev => [...prev, durationSeconds]);
-            if (normalizedScore !== null) setScores(prev => [...prev, normalizedScore]);
-            setActivityScore(normalizedScore);
+            
+            setActivityScore(score);
             setShowResultModal(true);
         } catch (e) {
             console.error('❌ Error al guardar resultado:', e);
         }
     };
-
-    const handleNext = async () => {
-        setShowResultModal(false);
-        if (currentIndex < activities.length - 1) {
-            setCurrentIndex(prev => prev + 1);
-        } else {
-            const totalDuration = durations.reduce((acc, cur) => acc + cur, 0);
-
-            // En vez de calcular localmente, llama al backend
-            let activitiesResultAverage = null;
+        const handleNext = async () => {
+    setShowResultModal(false);
+    if (currentIndex < activities.length - 1) {
+        setCurrentIndex(prev => prev + 1);
+    } else {
+        setTimeout(async () => {
             try {
-                const backendAverage = await getAverageForSessionAndUser(session.id, userId);
-                activitiesResultAverage = backendAverage ? Number(backendAverage) : null;
-            } catch (e) {
-                console.error('Error obteniendo promedio backend:', e);
-                // fallback local simple (solo si backend falla)
-                activitiesResultAverage = scores.length > 0
-                    ? Math.min(100, parseFloat((scores.reduce((a, b) => a + b, 0) / scores.length).toFixed(2)))
-                    : null;
-            }
+                const averageResponse = await getAverageForSessionAndUser(session.id, userId);
+                const activitiesResultAverage = averageResponse.data * 10;
 
-            const endedAt = new Date().toISOString().split('.')[0];
-            const mode = localStorage.getItem('selectedMode') || 'INDIVIDUAL';
+                console.log("✅ Promedio calculado después del delay:", activitiesResultAverage);
 
-            try {
+                const totalDuration = durations.reduce((acc, cur) => acc + cur, 0);
+                const endedAt = new Date().toISOString().split('.')[0];
+                const mode = localStorage.getItem('selectedMode') || 'INDIVIDUAL';
+
                 const existingSession = await getSesionUsuarioById(sesionUsuarioId);
+
                 const updatedPayload = {
-                    ...existingSession,
+                    id: existingSession.id,
+                    sesionId: existingSession.sesionId,
+                    userId: existingSession.userId,
                     status: 'COMPLETADA',
                     endedAt,
                     sessionDurationSeconds: totalDuration,
@@ -143,14 +135,20 @@ const SesionRunner: React.FC = () => {
                     startedAt: existingSession.startedAt || new Date().toISOString().split('.')[0],
                     date: existingSession.date || new Date().toISOString().split('T')[0]
                 };
+
                 await updateSesionUsuario(sesionUsuarioId, updatedPayload);
                 navigate('/user/Sesiones');
+
             } catch (error) {
+                console.error('❌ Error al calcular promedio y cerrar sesión:', error);
                 alert('❌ No se pudo completar la sesión.');
             }
-        }
-    };
+        }, 500); // Pequeño delay por si el backend tarda en registrar resultados
+    }
+};
 
+    
+    
 
     if (isLoading) return (
         <Box sx={{ width: '100%', height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
