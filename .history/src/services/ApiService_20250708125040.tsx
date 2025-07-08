@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { Patient } from '../data/types';
 
 const ApiService = axios.create({
-  baseURL: ' http://localhost:8081',
+  baseURL: ' http:',
 });
 
 // ─── PREGUNTAS ────────────────────────────────────────────────

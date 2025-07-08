@@ -89,7 +89,7 @@ const DashboardIndividual = () => {
               Tipo de Actividades
             </Typography>
             <Typography variant="body1" color="text.secondary">
-              Las actividades son de dos tipos, las que trabajan la memoria a traves de actividades y juegos, por otro lado las que trabajan la memoria atraves de videos entretenidos y preguntas finales de razonamiento. 
+              El sistema permite seleccionar manualmente el nivel de dificultad de las sesiones adaptandose a las capacidades y necesidades del usuario.
             </Typography>
           </CardContent>
         </Card>

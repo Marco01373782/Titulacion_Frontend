@@ -21,8 +21,7 @@
         </Typography>
 
         <Typography variant="body1" color="text.secondary" mb={4}>
-           El modo individual permite al cuidador o familiar acompañar a un grupo de adultos mayores en sesiones colectivas. No hay registro de progreso, ofreciendo sesiones libres, dinámicas y recreativas que promueven la participación social.
-        </Typography>
+           El modo grupal permite al cuidador o familiar realizar las sesiones de manera colectiva. 
 
         <Divider sx={{ my: 3 }}>
             <Chip label="Características del modo grupal" color="secondary" />
@@ -68,7 +67,7 @@
                 Sesiones libres
                 </Typography>
                 <Typography variant="body1" color="text.secondary">
-                Las sesiones se pueden repetir libremente, no tienen registros, límites ni seguimiento de progreso.
+                Las actividades se pueden repetir libremente, sin registros, límites ni seguimiento de progreso.
                 </Typography>
             </CardContent>
             </Card>

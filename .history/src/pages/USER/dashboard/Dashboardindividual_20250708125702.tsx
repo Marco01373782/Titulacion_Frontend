@@ -49,7 +49,7 @@ const DashboardIndividual = () => {
               Sesiones Disponibles
             </Typography>
             <Typography variant="body1" color="text.secondary">
-              Solo habra un intento para realizar cada sesion, una ves abierta y terminada se guardara los resultados y no se podra hacerlo de nuevo. 
+              Cada sesión completada desbloquea la siguiente. El avance depende del ritmo individual, no del tiempo.
             </Typography>
           </CardContent>
         </Card>
@@ -69,7 +69,7 @@ const DashboardIndividual = () => {
               Seguimiento detallado
             </Typography>
             <Typography variant="body1" color="text.secondary">
-              Se registran resultados, tiempos y evolución de cada sesion y actividad para análisis y mejora continua.
+              Se registran resultados, tiempos y evolución de cada actividad para análisis y mejora continua.
             </Typography>
           </CardContent>
         </Card>
@@ -86,10 +86,10 @@ const DashboardIndividual = () => {
           <CardContent>
             <AutoGraphIcon color="warning" sx={{ fontSize: 40, mb: 2 }} />
             <Typography variant="h3" gutterBottom>
-              Tipo de Actividades
+              Adaptación del Usuario
             </Typography>
             <Typography variant="body1" color="text.secondary">
-              Las actividades son de dos tipos, las que trabajan la memoria a traves de actividades y juegos, por otro lado las que trabajan la memoria atraves de videos entretenidos y preguntas finales de razonamiento. 
+              El sistema permite seleccionar manualmente el nivel de dificultad de las sesiones adaptandose a las capacidades y necesidades del usuario.
             </Typography>
           </CardContent>
         </Card>
