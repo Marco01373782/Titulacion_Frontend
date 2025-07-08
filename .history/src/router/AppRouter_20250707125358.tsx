@@ -52,7 +52,7 @@
       <Router>
         <Routes>
           
-          <Route path="/" element={<SplashScreen />} />
+          {/*<Route path="/" element={<SplashScreen />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
@@ -76,7 +76,7 @@
             <Route path="crear-usuarios" element={<CreateUserForm />} />
           </Route>
 
-         
+          {/* Rutas protegidas para USER */}
           <Route
             path="/user"
             element={
@@ -96,6 +96,7 @@
             <Route path="estadisticas" element={<Estadisticas />} />
           </Route>
 
+          {/* Actividades protegidas */}
           <Route
             path="/actividades"
             element={

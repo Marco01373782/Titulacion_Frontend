@@ -52,7 +52,7 @@
       <Router>
         <Routes>
           
-          <Route path="/" element={<SplashScreen />} />
+          <Route path="/" element={<S />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
