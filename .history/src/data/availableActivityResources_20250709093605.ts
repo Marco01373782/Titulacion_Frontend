@@ -1,0 +1,26 @@
+    // src/data/availableActivityResources.ts
+    const availableActivityResources = [
+
+            {label:'Figura Faltante', value: '/actividades/figura-faltante'},//completa y lista jaja 
+            {label:'Secuencia de Colores', value: '/actividades/secuencia-colores'}, //completa y lista
+            {label:'Recordar las palabras', value: '/actividades/recordar-palabras'}, //completa y lista 
+         {label:'Recordar las palabras', value: '/actividades/recordar-palabras'}, //completa y lista 
+ 
+
+
+
+        
+    
+    { label: 'Memoria - Intermedio ', value: '/actividades/memoria-intermedio' },
+    { label: 'Memoria - Avanzado', value: '/actividades/memoria-avanzada' },
+    
+    { label: 'Razonamiento - Principiante', value: '/actividades/razonamiento-principiante' },
+    { label: 'Razonamiento - Intermedio', value: '/actividades/razonamiento-intermedio' },
+    { label: 'Razonamiento - Avanzado', value: '/actividades/razonamiento-avanzado' },
+    
+    { label: 'Atención - Principiante', value: '/actividades/atencion-principiante' },
+    { label: 'Atención - Intermedio', value: '/actividades/atencion-intermedio' },
+    { label: 'Atención - Avanzado', value: '/actividades/atencion-avanzado' },
+    ];
+
+    export default availableActivityResources;
