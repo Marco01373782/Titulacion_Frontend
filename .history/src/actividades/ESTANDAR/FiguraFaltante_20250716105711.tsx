@@ -178,13 +178,13 @@ const FiguraFaltante = ({ onFinish }: { onFinish?: (result: string) => void }) =
                             ? '✅ ¡Correcto! +100'
                             : `❌ Incorrecto. La figura era: ${faltante}`}
                     </Typography>
-                    {/*<Button
+                    <Button
                         variant="outlined"
                         sx={{ mt: 2 }}
                         onClick={() => window.location.reload()}
                     >
                         Reintentar
-                    </Button>*/}
+                    </Button>
                 </>
             )}
         </Box>

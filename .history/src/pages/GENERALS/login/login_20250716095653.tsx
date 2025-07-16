@@ -45,14 +45,11 @@ const Login = () => {
             return;
         }
 
-        setLoading(true);
+        setLoading(true); // ⏳ Activamos el loading
 
         try {
-            // Esperamos tanto el login como un delay de 2 segundos
-            const [response] = await Promise.all([
-                loginUser(email, password),
-                new Promise(resolve => setTimeout(resolve, 2000)) // espera 2 segundos mínimo
-            ]);
+            const response = await loginUser(email, password);
+            console.log('Login response:', response.data);
 
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
@@ -83,11 +80,11 @@ const Login = () => {
                 setErrorMessage('Error de conexión con el servidor');
             }
         } finally {
-            setLoading(false);
+            setLoading(false); // ✅ Apagamos el loading
         }
     };
 
-
+        
 
 
 
@@ -237,30 +234,13 @@ const Login = () => {
                 </Paper>
             </Box>
             {loading && (
-                <Backdrop
-                    open={true}
-                    sx={{
-                        zIndex: 9999,
-                        color: '#fff',
-                        display: 'flex',
-                        flexDirection: 'column',
-                    }}
-                >
-                    <CircularProgress color="inherit" />
-                    <Typography
-                        sx={{
-                            mt: 2,
-                            color: '#fff', // puedes cambiarlo a un color de tu tema
-                            fontSize: '1.2rem',
-                            fontWeight: 500,
-                            textAlign: 'center',
-                        }}
-                    >
-                        Iniciando sesión...
+        <Backdrop open={true} sx={{ zIndex: 9999, color: '#fff' }}>
+            <CircularProgress color="inherit" />
+            <Typography  textAlign="center" sx={{ mt: 2, fontSize: '0.8rem' }}>
+                        Al registrarte aceptas nuestras Condiciones de uso y Políticas de Privacidad
                     </Typography>
-                </Backdrop>
-            )}
-
+        </Backdrop>
+    )}
         </Box>
     );
 };

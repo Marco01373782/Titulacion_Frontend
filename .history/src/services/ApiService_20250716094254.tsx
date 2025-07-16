@@ -3,7 +3,7 @@ import { Patient } from '../data/types';
 
 const ApiService = axios.create({
   //baseURL: 'https://neurox-backend-y4wg.onrender.com',
-  baseURL: 'http://localhost:8081',
+  /*baseURL: 'http://localhost:8081',*/
 });
 
 // ─── PREGUNTAS ────────────────────────────────────────────────

@@ -62,43 +62,43 @@ const Register = () => {
     };
 
     const handleRegister = () => {
-        setErrorMessage('');
-        const errors = validateForm();
-        setFormErrors(errors);
-        if (Object.keys(errors).length > 0) return;
+    setErrorMessage('');
+    const errors = validateForm();
+    setFormErrors(errors);
+    if (Object.keys(errors).length > 0) return;
 
-        setLoading(true); // ← activa loading
+    setLoading(true); // ← activa loading
 
-        const payload = {
-            email: formData.email,
-            password: formData.password,
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            roles: '',
-            parentesco: formData.parentesco,
-        };
-
-        registerUser(payload)
-            .then(() => loginUser(formData.email, formData.password))
-            .then((response) => {
-                const { token, roles } = response.data;
-                localStorage.setItem('token', token);
-                localStorage.setItem('userRole', roles);
-                localStorage.setItem('userId', response.data.id.toString());
-                navigate('/user/patient-flow');
-            })
-            .catch((error) => {
-                if (error.response?.data) {
-                    setErrorMessage(error.response.data);
-                } else {
-                    setErrorMessage('Error al registrar o iniciar sesión.');
-                }
-            })
-            .finally(() => setLoading(false)); // ← desactiva loading
+    const payload = {
+        email: formData.email,
+        password: formData.password,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        roles: '',
+        parentesco: formData.parentesco,
     };
 
-    return (
+    registerUser(payload)
+        .then(() => loginUser(formData.email, formData.password))
+        .then((response) => {
+            const { token, roles } = response.data;
+            localStorage.setItem('token', token);
+            localStorage.setItem('userRole', roles);
+            localStorage.setItem('userId', response.data.id.toString());
+            navigate('/user/patient-flow');
+        })
+        .catch((error) => {
+            if (error.response?.data) {
+                setErrorMessage(error.response.data);
+            } else {
+                setErrorMessage('Error al registrar o iniciar sesión.');
+            }
+        })
+        .finally(() => setLoading(false)); // ← desactiva loading
+};
 
+
+    return (
         <Box sx={{
             height: '100vh',
             display: 'flex',
@@ -273,28 +273,7 @@ const Register = () => {
                     </Button>
                 </Paper>
             </Box>
-
-            {loading && (
-                <Backdrop open={true} sx={{ zIndex: 9999, color: '#fff', flexDirection: 'column' }}>
-                    <CircularProgress color="inherit" />
-                    <Typography
-                        sx={{
-                            mt: 2,
-                            color: '#fff', // o usa 'primary.contrastText' si usas el theme
-                            fontSize: '1.2rem',
-                            fontWeight: 500,
-                            textAlign: 'center',
-                        }}
-                    >
-                        Creando usuario...
-                    </Typography>
-                </Backdrop>
-            )}
-
-            );
-
         </Box>
-
     );
 };
 

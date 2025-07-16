@@ -66,9 +66,7 @@ const Register = () => {
         const errors = validateForm();
         setFormErrors(errors);
         if (Object.keys(errors).length > 0) return;
-
-        setLoading(true); // ← activa loading
-
+        setLoading(true); 
         const payload = {
             email: formData.email,
             password: formData.password,
@@ -93,12 +91,10 @@ const Register = () => {
                 } else {
                     setErrorMessage('Error al registrar o iniciar sesión.');
                 }
-            })
-            .finally(() => setLoading(false)); // ← desactiva loading
+            });
     };
 
     return (
-
         <Box sx={{
             height: '100vh',
             display: 'flex',
@@ -273,28 +269,7 @@ const Register = () => {
                     </Button>
                 </Paper>
             </Box>
-
-            {loading && (
-                <Backdrop open={true} sx={{ zIndex: 9999, color: '#fff', flexDirection: 'column' }}>
-                    <CircularProgress color="inherit" />
-                    <Typography
-                        sx={{
-                            mt: 2,
-                            color: '#fff', // o usa 'primary.contrastText' si usas el theme
-                            fontSize: '1.2rem',
-                            fontWeight: 500,
-                            textAlign: 'center',
-                        }}
-                    >
-                        Creando usuario...
-                    </Typography>
-                </Backdrop>
-            )}
-
-            );
-
         </Box>
-
     );
 };
 

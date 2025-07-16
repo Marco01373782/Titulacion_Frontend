@@ -280,7 +280,7 @@ const Register = () => {
                     <Typography
                         sx={{
                             mt: 2,
-                            color: '#fff', // o usa 'primary.contrastText' si usas el theme
+                            color: 'green', // o usa 'primary.contrastText' si usas el theme
                             fontSize: '1.2rem',
                             fontWeight: 500,
                             textAlign: 'center',

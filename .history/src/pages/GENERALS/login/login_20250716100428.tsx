@@ -38,54 +38,54 @@ const Login = () => {
 
 
     const handleLogin = async () => {
-        setErrorMessage('');
+    setErrorMessage('');
 
-        if (!email || !password) {
-            setErrorMessage('Email y contraseña son requeridos');
-            return;
-        }
+    if (!email || !password) {
+        setErrorMessage('Email y contraseña son requeridos');
+        return;
+    }
 
-        setLoading(true);
+    setLoading(true);
 
-        try {
-            // Esperamos tanto el login como un delay de 2 segundos
-            const [response] = await Promise.all([
-                loginUser(email, password),
-                new Promise(resolve => setTimeout(resolve, 2000)) // espera 2 segundos mínimo
-            ]);
+    try {
+        // Esperamos tanto el login como un delay de 2 segundos
+        const [response] = await Promise.all([
+            loginUser(email, password),
+            new Promise(resolve => setTimeout(resolve, 2000)) // espera 2 segundos mínimo
+        ]);
 
-            if (response.data.token) {
-                localStorage.setItem('token', response.data.token);
-                localStorage.setItem('userId', response.data.id.toString());
-                const roles = response.data.roles;
-                const role = Array.isArray(roles) ? roles[0] : roles;
-                localStorage.setItem('userRole', role);
-                localStorage.setItem('user', JSON.stringify({
-                    id: response.data.id,
-                    email: response.data.email,
-                    roles: response.data.roles
-                }));
+        if (response.data.token) {
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('userId', response.data.id.toString());
+            const roles = response.data.roles;
+            const role = Array.isArray(roles) ? roles[0] : roles;
+            localStorage.setItem('userRole', role);
+            localStorage.setItem('user', JSON.stringify({
+                id: response.data.id,
+                email: response.data.email,
+                roles: response.data.roles
+            }));
 
-                if (role === 'admin') {
-                    navigate('/admin/gestionar-actividades');
-                } else if (role === 'user') {
-                    navigate('/user/dashboard');
-                } else {
-                    setErrorMessage('Rol no reconocido');
-                }
+            if (role === 'admin') {
+                navigate('/admin/gestionar-actividades');
+            } else if (role === 'user') {
+                navigate('/user/dashboard');
             } else {
-                setErrorMessage('Error al iniciar sesión');
+                setErrorMessage('Rol no reconocido');
             }
-        } catch (error) {
-            if ((error as ErrorResponse).response) {
-                setErrorMessage((error as ErrorResponse).response.data);
-            } else {
-                setErrorMessage('Error de conexión con el servidor');
-            }
-        } finally {
-            setLoading(false);
+        } else {
+            setErrorMessage('Error al iniciar sesión');
         }
-    };
+    } catch (error) {
+        if ((error as ErrorResponse).response) {
+            setErrorMessage((error as ErrorResponse).response.data);
+        } else {
+            setErrorMessage('Error de conexión con el servidor');
+        }
+    } finally {
+        setLoading(false);
+    }
+};
 
 
 

@@ -34,8 +34,6 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-    const [loading, setLoading] = useState(false);
-
 
     const handleLogin = async () => {
         setErrorMessage('');
@@ -45,14 +43,9 @@ const Login = () => {
             return;
         }
 
-        setLoading(true);
-
         try {
-            // Esperamos tanto el login como un delay de 2 segundos
-            const [response] = await Promise.all([
-                loginUser(email, password),
-                new Promise(resolve => setTimeout(resolve, 2000)) // espera 2 segundos mínimo
-            ]);
+            const response = await loginUser(email, password);
+            console.log('Login response:', response.data);
 
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
@@ -82,14 +75,8 @@ const Login = () => {
             } else {
                 setErrorMessage('Error de conexión con el servidor');
             }
-        } finally {
-            setLoading(false);
         }
     };
-
-
-
-
 
     return (
         <Box
@@ -236,31 +223,6 @@ const Login = () => {
                     </Button>
                 </Paper>
             </Box>
-            {loading && (
-                <Backdrop
-                    open={true}
-                    sx={{
-                        zIndex: 9999,
-                        color: '#fff',
-                        display: 'flex',
-                        flexDirection: 'column',
-                    }}
-                >
-                    <CircularProgress color="inherit" />
-                    <Typography
-                        sx={{
-                            mt: 2,
-                            color: '#fff', // puedes cambiarlo a un color de tu tema
-                            fontSize: '1.2rem',
-                            fontWeight: 500,
-                            textAlign: 'center',
-                        }}
-                    >
-                        Iniciando sesión...
-                    </Typography>
-                </Backdrop>
-            )}
-
         </Box>
     );
 };

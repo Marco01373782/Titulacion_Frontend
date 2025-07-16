@@ -38,6 +38,7 @@ const Login = () => {
 
 
     const handleLogin = async () => {
+        delay
         setErrorMessage('');
 
         if (!email || !password) {
@@ -45,14 +46,11 @@ const Login = () => {
             return;
         }
 
-        setLoading(true);
+        setLoading(true); // ⏳ Activamos el loading
 
         try {
-            // Esperamos tanto el login como un delay de 2 segundos
-            const [response] = await Promise.all([
-                loginUser(email, password),
-                new Promise(resolve => setTimeout(resolve, 2000)) // espera 2 segundos mínimo
-            ]);
+            const response = await loginUser(email, password);
+            console.log('Login response:', response.data);
 
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
@@ -83,7 +81,7 @@ const Login = () => {
                 setErrorMessage('Error de conexión con el servidor');
             }
         } finally {
-            setLoading(false);
+            setLoading(false); // ✅ Apagamos el loading
         }
     };
 

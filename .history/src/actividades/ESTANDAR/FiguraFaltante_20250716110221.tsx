@@ -184,7 +184,7 @@ const FiguraFaltante = ({ onFinish }: { onFinish?: (result: string) => void }) =
                         onClick={() => window.location.reload()}
                     >
                         Reintentar
-                    </Button>*/}
+                    </Button>*/
                 </>
             )}
         </Box>

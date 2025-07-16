@@ -175,13 +175,7 @@ const RecordarImagenes = ({ onFinish }: { onFinish?: (result: string) => void })
                     <Typography variant="h6" color="primary" textAlign="center">
                         {resultadoTexto}
                     </Typography>
-                    { /* <Button
-                        variant="outlined"
-                        sx={{ mt: 2 }}
-                        onClick={() => window.location.reload()}
-                    >
-                        Reintentar
-                    </Button>*/}
+                    
                 </>
             )}
         </Box>

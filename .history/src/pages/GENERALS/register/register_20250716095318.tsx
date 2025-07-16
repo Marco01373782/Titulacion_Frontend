@@ -273,28 +273,7 @@ const Register = () => {
                     </Button>
                 </Paper>
             </Box>
-
-            {loading && (
-                <Backdrop open={true} sx={{ zIndex: 9999, color: '#fff', flexDirection: 'column' }}>
-                    <CircularProgress color="inherit" />
-                    <Typography
-                        sx={{
-                            mt: 2,
-                            color: '#fff', // o usa 'primary.contrastText' si usas el theme
-                            fontSize: '1.2rem',
-                            fontWeight: 500,
-                            textAlign: 'center',
-                        }}
-                    >
-                        Creando usuario...
-                    </Typography>
-                </Backdrop>
-            )}
-
-            );
-
         </Box>
-
     );
 };
 

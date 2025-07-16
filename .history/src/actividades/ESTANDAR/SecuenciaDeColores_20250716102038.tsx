@@ -66,7 +66,7 @@ const ColoresSecuencia = ({ onFinish }: { onFinish?: (result: string) => void })
                         <Typography variant="body1">Memoriza esta secuencia:</Typography>
                         <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', justifyContent: 'center', mt: 2 }}>
                             {secuencia.map((color, i) => (
-                                <Paper key={i} elevation={3} sx={{ width: isMobile ? 120 : 180, height: isMobile ? 120 : 200, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: isMobile ? '2.5rem' : '4rem' }}>
+                                <Paper key={i} elevation={3} sx={{ width: isMobile ? 120 : 180, height: isMobile ? 100 : 200, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: isMobile ? '2.5rem' : '4rem' }}>
                                     {color}
                                 </Paper>
                             ))}
