@@ -97,6 +97,7 @@ const NeuroXHeader: React.FC<NeuroXHeaderProps> = ({ onToggleSidebar }) => {
             </IconButton>
             {userRole === 'admin' && (
               <IconButton color="inherit" onClick={handleOpenSettings}>
+                
               </IconButton>
             )}
 

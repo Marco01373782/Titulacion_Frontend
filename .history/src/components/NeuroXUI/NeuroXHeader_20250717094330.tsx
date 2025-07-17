@@ -94,11 +94,7 @@ const NeuroXHeader: React.FC<NeuroXHeaderProps> = ({ onToggleSidebar }) => {
           <Box display="flex" alignItems="center" gap={2}>
             <IconButton onClick={handleLogout} color="inherit">
               <ExitToAppIcon />
-            </IconButton>
-            {userRole === 'admin' && (
-              <IconButton color="inherit" onClick={handleOpenSettings}>
-              </IconButton>
-            )}
+            
 
 
             {user && (
