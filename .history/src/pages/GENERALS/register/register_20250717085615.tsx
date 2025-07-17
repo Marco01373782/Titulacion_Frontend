@@ -161,30 +161,30 @@ const Register = () => {
 
                     <Box sx={{ display: 'flex', gap: 2, flexDirection: { xs: 'column', sm: 'row' }, mb: 2 }}>
                         <TextField
-                            label="Nombre"
-                            name="firstName"
-                            fullWidth
-                            value={formData.firstName}
-                            onChange={handleChange}
-                            onInput={(e: any) => {
-                                e.target.value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
-                            }}
-                            error={!!formErrors.firstName}
-                            helperText={formErrors.firstName}
-                        />
+    label="Nombre"
+    name="firstName"
+    fullWidth
+    value={formData.firstName}
+    onChange={handleChange}
+    onInput={(e: any) => {
+        e.target.value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
+    }}
+    error={!!formErrors.firstName}
+    helperText={formErrors.firstName}
+/>
 
-                        <TextField
-                            label="Apellido"
-                            name="lastName"
-                            fullWidth
-                            value={formData.lastName}
-                            onChange={handleChange}
-                            onInput={(e: any) => {
-                                e.target.value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
-                            }}
-                            error={!!formErrors.lastName}
-                            helperText={formErrors.lastName}
-                        />
+<TextField
+    label="Apellido"
+    name="lastName"
+    fullWidth
+    value={formData.lastName}
+    onChange={handleChange}
+    onInput={(e: any) => {
+        e.target.value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
+    }}
+    error={!!formErrors.lastName}
+    helperText={formErrors.lastName}
+/>
 
                     </Box>
 

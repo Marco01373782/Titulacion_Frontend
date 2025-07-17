@@ -194,43 +194,43 @@ const RegisterPatient = () => {
           }}
         >
           <TextField
-            label="Primer Nombre *"
-            name="firstname"
-            value={form.firstname}
-            onChange={handleInputChange}
-            onInput={(e: any) => {
-              e.target.value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
-            }}
-            error={!!formErrors.firstname}
-            helperText={formErrors.firstname}
-            fullWidth
-            required
-          />
+  label="Primer Nombre *"
+  name="firstname"
+  value={form.firstname}
+  onChange={handleInputChange}
+  onInput={(e: any) => {
+    e.target.value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
+  }}
+  error={!!formErrors.firstname}
+  helperText={formErrors.firstname}
+  fullWidth
+  required
+/>
 
-          <TextField
-            label="Segundo Nombre"
-            name="secondname"
-            value={form.secondname}
-            onChange={handleInputChange}
-            onInput={(e: any) => {
-              e.target.value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
-            }}
-            fullWidth
-          />
+<TextField
+  label="Segundo Nombre"
+  name="secondname"
+  value={form.secondname}
+  onChange={handleInputChange}
+  onInput={(e: any) => {
+    e.target.value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
+  }}
+  fullWidth
+/>
 
-          <TextField
-            label="Apellido *"
-            name="surname"
-            value={form.surname}
-            onChange={handleInputChange}
-            onInput={(e: any) => {
-              e.target.value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
-            }}
-            error={!!formErrors.surname}
-            helperText={formErrors.surname}
-            fullWidth
-            required
-          />
+<TextField
+  label="Apellido *"
+  name="surname"
+  value={form.surname}
+  onChange={handleInputChange}
+  onInput={(e: any) => {
+    e.target.value = e.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '');
+  }}
+  error={!!formErrors.surname}
+  helperText={formErrors.surname}
+  fullWidth
+  required
+/>
 
           <TextField
             label="Edad *"

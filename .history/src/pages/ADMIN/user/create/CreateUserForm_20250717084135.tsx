@@ -129,7 +129,7 @@ const CreateUserForm: React.FC = () => {
                         <InputLabel>Rol</InputLabel>
                         <Select value={role} label="Rol" onChange={(e) => setRole(e.target.value)} required>
                             <MenuItem value="admin">Administrador</MenuItem>
-                            {<MenuItem value="user">Usuario</MenuItem>}
+                            {<MenuItem value="user">Usurio</MenuItem>}
                             
                         </Select>
                     </FormControl>
