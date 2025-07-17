@@ -51,7 +51,7 @@ const GroupSesionRunner: React.FC = () => {
     };
 
     const handleFinishSession = () => {
-        navigate('/user/Sesiones');
+        navigate('/app/sesion-grupal-grid');
     };
 
     const wrapper = activities[currentIndex];
@@ -63,8 +63,8 @@ const GroupSesionRunner: React.FC = () => {
     return (
         <Box
             sx={{
-                width: '100%',
-                height: '100%',
+                width: '100vw',
+                height: '100vh',
                 overflow: 'hidden',
                 p: 0,
                 m: 0,
@@ -129,28 +129,16 @@ const GroupSesionRunner: React.FC = () => {
                     </Box>
 
                     {showContinue && (
-                        <Box
-                            sx={{
-                                textAlign: 'center',
-                                width: '100%',
-                                py: 2,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                                alignItems: 'center'
-                            }}
-                        >
-                            <Typography
-                                variant={isMobile ? 'h4' : 'h3'}
-                                sx={{ fontWeight: 'bold', mb: 2 }}
-                            >
-                                ✅ Puntaje: {activityScore}
+                        <Box sx={{ textAlign: 'center', width: '100%', py: 2 }}>
+                            <Typography variant="subtitle1">
+                                ✅ Resultado: <strong>{activityScore}</strong>
                             </Typography>
                             <Button
                                 onClick={handleContinue}
                                 variant="contained"
                                 size="large"
-                                sx={{ width: isMobile ? '100%' : '300px' }}
+                                sx={{ mt: 1 }}
+                                fullWidth={isMobile}
                             >
                                 {currentIndex < activities.length - 1 ? '➡ Continuar' : '🏁 Finalizar sesión'}
                             </Button>

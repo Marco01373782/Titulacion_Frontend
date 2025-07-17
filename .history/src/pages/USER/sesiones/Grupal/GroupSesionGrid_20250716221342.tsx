@@ -36,7 +36,7 @@ const GroupSesionGrid = () => {
     };
 
     return (
-        <Box p={2} width={'100%'} height={'100%'}>
+        <Box p={2} width={'100%} height={100%}>
             <Typography variant="h5" fontWeight="bold" mb={3} textAlign="center">
                 🧠 Modo Grupal: Selecciona una sesión
             </Typography>

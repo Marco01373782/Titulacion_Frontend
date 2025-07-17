@@ -51,7 +51,7 @@ const GroupSesionRunner: React.FC = () => {
     };
 
     const handleFinishSession = () => {
-        navigate('/user/Sesiones');
+        navigate('/app/sesion-grupal-grid');
     };
 
     const wrapper = activities[currentIndex];
@@ -64,7 +64,7 @@ const GroupSesionRunner: React.FC = () => {
         <Box
             sx={{
                 width: '100%',
-                height: '100%',
+                height: '100vh',
                 overflow: 'hidden',
                 p: 0,
                 m: 0,
