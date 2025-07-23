@@ -37,7 +37,7 @@
   import RecordarPalabras from '../actividades/ESTANDAR/RecordarPalabras';
   import RecordarImagenes from '../actividades/ESTANDAR/RecordarImagenes';
   import RecordarImagenes1 from '../actividades/ESTANDAR/RecordarImagenes1';
-  import MemoriaVisual from '../actividades/ESTANDAR/MemoriaVisual';
+  import Me
  
 
   const AppRouter = () => {
@@ -102,7 +102,6 @@
             <Route path="recordar-palabras" element={<RecordarPalabras />} />
             <Route path="recordar-imagenes" element={<RecordarImagenes />} />
             <Route path="recordar-imagenes1" element={<RecordarImagenes1 />} />
-            <Route path="Memoria-Visual" element={<MemoriaVisual/>} />
 
 
           </Route>

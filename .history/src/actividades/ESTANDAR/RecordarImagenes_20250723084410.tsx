@@ -36,7 +36,7 @@ const RecordarImagenes = ({ onFinish }: { onFinish?: (result: string) => void })
 
     useEffect(() => {
         if (fase === 'memorizar') {
-            const timer = setTimeout(() => setFase('seleccionar'), 6500); // 8 segundos para memorizar
+            const timer = setTimeout(() => setFase('seleccionar'), 65000); // 8 segundos para memorizar
             return () => clearTimeout(timer);
         }
     }, [fase]);

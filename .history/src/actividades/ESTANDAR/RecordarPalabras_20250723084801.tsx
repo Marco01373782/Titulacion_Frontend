@@ -14,7 +14,7 @@ const RecordarPalabras = ({ onFinish }: { onFinish?: (result: string) => void })
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     const TOTAL_OBJETIVO = 4; // Puedes cambiar esto a 3, 5, etc.
-    const TOTAL_DISTRACTORES = 5;
+    const TOTAL_DISTRACTORES = 4;
 
     const [fase, setFase] = useState<'instruccion' | 'memorizar' | 'seleccionar' | 'resultado'>('instruccion');
     const [palabrasObjetivo] = useState<string[]>([...TODAS_LAS_PALABRAS].sort(() => Math.random() - 0.5).slice(0, TOTAL_OBJETIVO));
@@ -31,7 +31,7 @@ const RecordarPalabras = ({ onFinish }: { onFinish?: (result: string) => void })
 
     useEffect(() => {
         if (fase === 'memorizar') {
-            const timer = setTimeout(() => setFase('seleccionar'), 6000);
+            const timer = setTimeout(() => setFase('seleccionar'), 8000);
             return () => clearTimeout(timer);
         }
     }, [fase]);

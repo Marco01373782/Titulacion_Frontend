@@ -15,7 +15,7 @@
                 '/actividades/recordar-palabras':RecordarPalabras,
                 '/actividades/recordar-imagenes':RecordarImagenes,
                 '/actividades/recordar-imagenes1':RecordarImagenes1,
-                '/actividades/Memoria-Visual':MemoriaVisual,
+                '/actividades/Memoria':RecordarImagenes1,
             
             };
 

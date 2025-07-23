@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { Patient } from '../data/types';
 
 const ApiService = axios.create({
-  //baseURL: 'https://neurox-backend-y4wg.onrender.com',
+  baseURL: 'https://neurox-backend-y4wg.onrender.com',
   baseURL: 'http://localhost:8081',
 });
 

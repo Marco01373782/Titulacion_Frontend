@@ -31,7 +31,7 @@ const RecordarPalabras = ({ onFinish }: { onFinish?: (result: string) => void })
 
     useEffect(() => {
         if (fase === 'memorizar') {
-            const timer = setTimeout(() => setFase('seleccionar'), 6000);
+            const timer = setTimeout(() => setFase('seleccionar'), 8000);
             return () => clearTimeout(timer);
         }
     }, [fase]);

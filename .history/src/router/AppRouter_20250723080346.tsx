@@ -102,7 +102,7 @@
             <Route path="recordar-palabras" element={<RecordarPalabras />} />
             <Route path="recordar-imagenes" element={<RecordarImagenes />} />
             <Route path="recordar-imagenes1" element={<RecordarImagenes1 />} />
-            <Route path="Memoria-Visual" element={<MemoriaVisual/>} />
+            <Route path="Memoria-Visual" element={<RecordarImagenes1 />} />
 
 
           </Route>

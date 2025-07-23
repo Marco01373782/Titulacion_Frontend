@@ -6,7 +6,7 @@ const availableActivityResources = [
         { label: 'Recordar las palabras', value: '/actividades/recordar-palabras' }, //completa y lista 
         { label: 'Recordar las imagenes', value: '/actividades/recordar-imagenes' }, //completa y lista 
         { label: 'Observar y recordar', value: '/actividades/recordar-imagenes1' }, //completa y lista 
-        { label: 'Memoria Visual', value: '/actividades/Memoria-Visual' }, //completa y lista 
+        { label: 'Memoria ', value: '/actividades/recordar-imagenes1' }, //completa y lista 
 
 ];
 
