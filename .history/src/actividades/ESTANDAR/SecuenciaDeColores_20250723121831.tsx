@@ -19,7 +19,7 @@ const ColoresSecuencia = ({ onFinish }: { onFinish?: (result: string) => void })
     const [resultado, setResultado] = useState<string | null>(null);
 
     const iniciar = () => {
-        const nuevaSecuencia = generarSecuencia(4); // Modo más suave: 4 elementos
+        const nuevaSecuencia = generarSecuencia(6); // Puedes hacer esto dinámico
         setSecuencia(nuevaSecuencia);
         setRespuesta([]);
         setResultado(null);
@@ -27,17 +27,18 @@ const ColoresSecuencia = ({ onFinish }: { onFinish?: (result: string) => void })
         setFase('mostrando');
     };
 
+    // Animar la secuencia tipo Simon
     useEffect(() => {
         if (fase === 'mostrando') {
             if (indiceActual < secuencia.length) {
                 const timeout1 = setTimeout(() => {
                     setFlash(secuencia[indiceActual]);
-                }, 600);
+                }, 400);
 
                 const timeout2 = setTimeout(() => {
                     setFlash(null);
                     setIndiceActual(prev => prev + 1);
-                }, 1600);
+                }, 1000);
 
                 return () => {
                     clearTimeout(timeout1);
@@ -47,7 +48,7 @@ const ColoresSecuencia = ({ onFinish }: { onFinish?: (result: string) => void })
                 const timeout = setTimeout(() => {
                     setFase('responder');
                     setIndiceActual(0);
-                }, 1200);
+                }, 800);
                 return () => clearTimeout(timeout);
             }
         }
@@ -100,7 +101,7 @@ const ColoresSecuencia = ({ onFinish }: { onFinish?: (result: string) => void })
                 {fase === 'inicio' && (
                     <>
                         <Typography textAlign="center" sx={{ fontSize: '1.2rem', color: '#333' }}>
-                            Memoriza la secuencia de colores (4). Se mostrará uno por uno.
+                            Memoriza la secuencia de colores. Se mostrará uno por uno.
                         </Typography>
                         <Button
                             variant="contained"
@@ -169,6 +170,10 @@ const ColoresSecuencia = ({ onFinish }: { onFinish?: (result: string) => void })
                         <Typography variant="h6" textAlign="center" color="primary">
                             {resultado}
                         </Typography>
+                        {/* Puedes activar esto si quieres */}
+                        {/* <Button variant="outlined" onClick={iniciar} sx={{ mt: 2 }}>
+                            Volver a intentar
+                        </Button> */}
                     </Box>
                 )}
             </Paper>
