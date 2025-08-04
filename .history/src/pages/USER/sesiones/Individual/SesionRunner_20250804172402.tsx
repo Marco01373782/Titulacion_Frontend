@@ -174,7 +174,8 @@ const SesionRunner: React.FC = () => {
                 {isMusicPlaying ? 'Silencio' : 'Música'}
             </Button>
 
-            <Paper elevation={3} sx={{ width: '100%', height: '100%', p: 0.8, display: 'flex', flexDirection: 'column', bgcolor: '#ffffff' }}>
+            <Paper elevation={3} sx={{ width: '100%', height: '100%', p: 0.8, display: 'flex', flexDirection: 'column', bgcolor: theme.palette.background.paper
+ }}>
                 <Typography variant="h5" sx={{ mb: 2 }}>
                     Sesión: {session?.title} | Actividad {currentIndex + 1} de {activities.length}
                 </Typography>
@@ -200,7 +201,7 @@ const SesionRunner: React.FC = () => {
                         </Typography>
                     </DialogContent>
                     <DialogActions>
-                        <Button  variant="contained"  onClick={handleStartActivity} fullWidth size="large" >
+                        <Button variant="contained" color="success" onClick={handleStartActivity} fullWidth size="large">
                             ¡Entendido, vamos!
                         </Button>
                     </DialogActions>

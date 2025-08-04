@@ -200,7 +200,7 @@ const SesionRunner: React.FC = () => {
                         </Typography>
                     </DialogContent>
                     <DialogActions>
-                        <Button  variant="contained"  onClick={handleStartActivity} fullWidth size="large" >
+                        <Button variant="contained" color= '' onClick={handleStartActivity} fullWidth size="large">
                             ¡Entendido, vamos!
                         </Button>
                     </DialogActions>

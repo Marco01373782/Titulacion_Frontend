@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CustomModal from '../../../components/NeuroXUI/CustomModal';
 
@@ -20,13 +20,18 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 
 const NavegadorBanner: React.FC = () => {
-    const [visible, setVisible] = useState(true); // siempre visible al cargar
+    const [visible, setVisible] = useState(false);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
+    useEffect(() => {
+        const closed = localStorage.getItem('navegadorBannerClosed');
+        if (!closed) setVisible(true);
+    }, []);
+
     const handleClose = () => {
         setVisible(false);
-        // ya no guardamos nada en localStorage
+        
     };
 
     if (!visible) return null;
@@ -70,7 +75,6 @@ const NavegadorBanner: React.FC = () => {
     );
 };
 
-
 const Home: React.FC = () => {
     const [modalData, setModalData] = useState<{ title: string; content: string } | null>(null);
     const navigate = useNavigate();
@@ -102,7 +106,7 @@ const Home: React.FC = () => {
                     overflow: 'hidden',
                     backgroundColor: '#F4F5FA',
                     p: 2,
-
+                    
                 }}
             >
 
