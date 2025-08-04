@@ -13,7 +13,7 @@ import {
     useMediaQuery
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { createSession, fetchDifficulties, assignActivitiesAuto, fetchAllActivities } from '../../../../services/ApiService';
+import { createSession, fetchDifficulties, assignActivitiesAuto, fetchAllActivities } from '../../../..';
 import LoadingOverlay from '../../../../components/modal/Loading/LoadingOverlay';
 import Toast from '../../../../components/toast/Toast';
 

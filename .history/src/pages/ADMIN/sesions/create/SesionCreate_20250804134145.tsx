@@ -13,9 +13,19 @@ import {
     useMediaQuery
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { createSession, fetchDifficulties, assignActivitiesAuto, fetchAllActivities } from '../../../../services/ApiService';
+import { Activity } from '../../../../Types/ActivityTypes';
+import {
+    createSession,
+    fetchDifficulties,
+    assignActivitiesAuto,
+    fetchAllActivities,
+    assignActivitiesManual,
+} from '../../../../services/ApiService';
+import ActivitySelector from '../../../../components/modal/Activity-Selector/ActivitySelector';
 import LoadingOverlay from '../../../../components/modal/Loading/LoadingOverlay';
 import Toast from '../../../../components/toast/Toast';
+
+type GroupedActivities = Record<string, Activity[]>;
 
 const SesionCreate: React.FC = () => {
     const [title, setTitle] = useState('');
@@ -23,6 +33,10 @@ const SesionCreate: React.FC = () => {
     const [difficulty, setDifficulty] = useState('');
     const [difficulties, setDifficulties] = useState<string[]>([]);
     const [sesionId, setSesionId] = useState<number | null>(null);
+    const [activities, setActivities] = useState<Activity[]>([]);
+    const [groupedActivities, setGroupedActivities] = useState<GroupedActivities>({});
+    const [selectedActivityIds, setSelectedActivityIds] = useState<number[]>([]);
+    const [showManualSelect, setShowManualSelect] = useState(false);
     const [loading, setLoading] = useState(false);
     const [loadingMessage, setLoadingMessage] = useState('');
     const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
@@ -36,6 +50,32 @@ const SesionCreate: React.FC = () => {
             .then((res) => setDifficulties(res.data))
             .catch(() => setToast({ message: 'Error al cargar dificultades', type: 'error' }));
     }, []);
+
+    useEffect(() => {
+        if (sesionId) {
+            fetchAllActivities()
+                .then((res) => setActivities(res.data))
+                .catch(() => setToast({ message: 'Error al cargar actividades', type: 'error' }));
+        }
+    }, [sesionId]);
+
+    useEffect(() => {
+        if (!difficulty) return setGroupedActivities({});
+
+        const filtered = activities.filter(
+            (a) => a.difficulty === difficulty && typeof a.type === 'string' && a.type.trim() !== ''
+        );
+
+        const grouped = filtered.reduce((groups: GroupedActivities, activity) => {
+            const typeName = activity.type || 'Tipo desconocido';
+            if (!groups[typeName]) groups[typeName] = [];
+            groups[typeName].push(activity);
+            return groups;
+        }, {});
+
+        setGroupedActivities(grouped);
+        setSelectedActivityIds([]);
+    }, [activities, difficulty]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -69,6 +109,32 @@ const SesionCreate: React.FC = () => {
         }
     };
 
+    
+
+    const handleConfirmManual = (selectedIds: number[]) => {
+        // Validar que no haya más de una actividad por tipo
+        const selectedActivities = activities.filter((a) => selectedIds.includes(a.id));
+        const tiposUsados = new Set<string>();
+        for (const act of selectedActivities) {
+            if (tiposUsados.has(act.type)) {
+                setToast({ message: `Solo puedes seleccionar una actividad por tipo (${act.type})`, type: 'error' });
+                return;
+            }
+            tiposUsados.add(act.type);
+        }
+
+        setLoading(true);
+        setLoadingMessage('Asignando actividades...');
+        assignActivitiesManual(sesionId!, selectedIds)
+            .then(() => {
+                setToast({ message: 'Actividades asignadas manualmente', type: 'success' });
+                setShowManualSelect(false);
+                navigate('/admin/gestionar-sesiones');
+            })
+            .catch(() => setToast({ message: 'Error al asignar manualmente', type: 'error' }))
+            .finally(() => setLoading(false));
+    };
+
     const handleCancel = () => {
         navigate('/admin/gestionar-sesiones');
     };
@@ -81,33 +147,12 @@ const SesionCreate: React.FC = () => {
 
             <form onSubmit={handleSubmit}>
                 <Stack spacing={2}>
-                    <TextField
-                        label="Título"
-                        fullWidth
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        disabled={!!sesionId || loading}
-                        required
-                    />
-                    <TextField
-                        label="Descripción"
-                        multiline
-                        rows={4}
-                        fullWidth
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                        disabled={!!sesionId || loading}
-                        required
-                    />
+                    <TextField label="Título" fullWidth value={title} onChange={(e) => setTitle(e.target.value)} disabled={!!sesionId || loading} required />
+                    <TextField label="Descripción" multiline rows={4} fullWidth value={description} onChange={(e) => setDescription(e.target.value)} disabled={!!sesionId || loading} required />
 
                     <FormControl fullWidth disabled={!!sesionId || loading}>
                         <InputLabel>Dificultad</InputLabel>
-                        <Select
-                            value={difficulty}
-                            onChange={(e) => setDifficulty(e.target.value)}
-                            label="Dificultad"
-                            required
-                        >
+                        <Select value={difficulty} onChange={(e) => setDifficulty(e.target.value)} label="Dificultad" required>
                             {difficulties.map((name) => (
                                 <MenuItem key={name} value={name}>{name}</MenuItem>
                             ))}
@@ -116,12 +161,8 @@ const SesionCreate: React.FC = () => {
 
                     {!sesionId && (
                         <Stack direction="row" spacing={2}>
-                            <Button variant="contained" type="submit" disabled={loading}>
-                                Crear sesión
-                            </Button>
-                            <Button variant="outlined" onClick={handleCancel} disabled={loading}>
-                                Cancelar
-                            </Button>
+                            <Button variant="contained" type="submit" disabled={loading}>Crear sesión</Button>
+                            <Button variant="outlined" onClick={handleCancel} disabled={loading}>Cancelar</Button>
                         </Stack>
                     )}
                 </Stack>
@@ -131,12 +172,13 @@ const SesionCreate: React.FC = () => {
                 <Box mt={4}>
                     <Typography variant="h6" mb={2}>Asignar actividades para la sesión</Typography>
                     <Stack spacing={2} direction={isMobile ? 'column' : 'row'}>
-                        <Button variant="contained" onClick={handleAsignarAuto} disabled={loading}>
-                            Asignar actividades
-                        </Button>
+                    
+                        <Button variant="contained" onClick={handleAsignarAuto} disabled={loading}>Asignar automáticamente</Button>
                     </Stack>
                 </Box>
             )}
+
+    
 
             <LoadingOverlay visible={loading} message={loadingMessage} />
         </Box>

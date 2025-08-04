@@ -13,9 +13,17 @@ import {
     useMediaQuery
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { createSession, fetchDifficulties, assignActivitiesAuto, fetchAllActivities } from '../../../../services/ApiService';
+import { Activity } from '../../../../Types/ActivityTypes';
+import {
+    createSession,
+    fetchDifficulties,
+    assignActivitiesAuto,
+    fetchAllActivities,
+} from '../../../../services/ApiService';
 import LoadingOverlay from '../../../../components/modal/Loading/LoadingOverlay';
 import Toast from '../../../../components/toast/Toast';
+
+type GroupedActivities = Record<string, Activity[]>;
 
 const SesionCreate: React.FC = () => {
     const [title, setTitle] = useState('');
@@ -23,6 +31,8 @@ const SesionCreate: React.FC = () => {
     const [difficulty, setDifficulty] = useState('');
     const [difficulties, setDifficulties] = useState<string[]>([]);
     const [sesionId, setSesionId] = useState<number | null>(null);
+    const [activities, setActivities] = useState<Activity[]>([]);
+    const [groupedActivities,setGroupedActivities] = useState<GroupedActivities>({});
     const [loading, setLoading] = useState(false);
     const [loadingMessage, setLoadingMessage] = useState('');
     const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
@@ -36,6 +46,31 @@ const SesionCreate: React.FC = () => {
             .then((res) => setDifficulties(res.data))
             .catch(() => setToast({ message: 'Error al cargar dificultades', type: 'error' }));
     }, []);
+
+    useEffect(() => {
+        if (sesionId) {
+            fetchAllActivities()
+                .then((res) => setActivities(res.data))
+                .catch(() => setToast({ message: 'Error al cargar actividades', type: 'error' }));
+        }
+    }, [sesionId]);
+
+    useEffect(() => {
+        if (!difficulty) return setGroupedActivities({});
+
+        const filtered = activities.filter(
+            (a) => a.difficulty === difficulty && typeof a.type === 'string' && a.type.trim() !== ''
+        );
+
+        const grouped = filtered.reduce((groups: GroupedActivities, activity) => {
+            const typeName = activity.type || 'Tipo desconocido';
+            if (!groups[typeName]) groups[typeName] = [];
+            groups[typeName].push(activity);
+            return groups;
+        }, {});
+
+        setGroupedActivities(grouped);
+    }, [activities, difficulty]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();

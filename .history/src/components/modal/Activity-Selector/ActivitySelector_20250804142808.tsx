@@ -13,8 +13,8 @@ import {
     useMediaQuery
 } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
-import { createSession, fetchDifficulties, assignActivitiesAuto, fetchAllActivities } from '../../../../services/ApiService';
-import LoadingOverlay from '../../../../components/modal/Loading/LoadingOverlay';
+import { createSession, fetchDifficulties, assignActivitiesAuto, fetchAllActivities } from '../../../services/ApiService';
+import LoadingOverlay from '../Loading/LoadingOverlay';
 import Toast from '../../../../components/toast/Toast';
 
 const SesionCreate: React.FC = () => {
