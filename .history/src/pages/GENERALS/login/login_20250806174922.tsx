@@ -48,7 +48,7 @@ const Login = () => {
         setLoading(true);
 
         try {
-            
+            // Esperamos tanto el login como un delay de 2 segundos
             const [response] = await Promise.all([
                 loginUser(email, password),
                 new Promise(resolve => setTimeout(resolve, 2000)) 

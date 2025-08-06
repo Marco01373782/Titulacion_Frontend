@@ -94,7 +94,7 @@ const Register = () => {
                     setErrorMessage('Error al registrar o iniciar sesión.');
                 }
             })
-            .finally(() => setLoading(false));
+            .finally(() => setLoading(false)); // ← desactiva loading
     };
 
     return (
@@ -105,7 +105,7 @@ const Register = () => {
             flexDirection: { xs: 'column', md: 'row' },
             backgroundColor: theme.palette.background.default,
         }}>
-        
+          
             <Box sx={{
                 flex: 1,
                 backgroundColor: '#FFD2FE',

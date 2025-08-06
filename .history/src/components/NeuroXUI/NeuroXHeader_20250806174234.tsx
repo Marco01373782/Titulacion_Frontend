@@ -3,7 +3,7 @@ import {
   AppBar, Toolbar, Typography, Box, IconButton, Button, useTheme
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-
+//import SettingsIcon from '@mui/icons-material/Settings';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import Logosegundario from '../../assets/imagenes/logo_segundario.webp';
 import { getUserById } from '../../services/ApiService';
@@ -123,7 +123,7 @@ const NeuroXHeader: React.FC<NeuroXHeaderProps> = ({ onToggleSidebar }) => {
         />
       )}
 
-      
+      {/* Ventana modal de ajustes */}
       <SettingsModal open={settingsOpen} onClose={handleCloseSettings} />
     </>
   );

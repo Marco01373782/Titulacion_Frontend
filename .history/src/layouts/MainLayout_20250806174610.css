@@ -10,14 +10,14 @@
   min-height: 40px;
 }
 
-
+/* Body layout con sidebar + contenido */
 .layout-body {
   display: flex;
   height: 92vh;
   transition: all 0.3s ease;
 }
 
-
+/* Sidebar normal */
 .sidebar {
   
   width: 220px;
@@ -29,7 +29,7 @@
   z-index: 10;
 }
 
-
+/* Contenido toma todo espacio restante */
 .layout-content {
   flex: 1;
   padding: 0.5rem;
@@ -37,7 +37,7 @@
   
 }
 
-
+/* MOBILE: Sidebar oculto por defecto y aparece con transform */
 @media (max-width: 768px) {
   .layout-body {
     position: relative;
@@ -57,13 +57,15 @@
   .layout-content {
     flex: 1;
     padding: 0.3rem;
+    /* Opcional: oscurecer fondo cuando sidebar abierto */
     position: relative;
     z-index: 1;
   }
 }
 @media (min-width: 769px) {
   .layout-body {
-    padding-left: 250px; 
+    padding-left: 250px; /* ancho del sidebar fijo */
   }
 }
 
+/*NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR */

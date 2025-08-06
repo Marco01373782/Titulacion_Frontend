@@ -105,7 +105,7 @@ const Register = () => {
             flexDirection: { xs: 'column', md: 'row' },
             backgroundColor: theme.palette.background.default,
         }}>
-        
+            {/* Panel izquierdo: oculto en móviles */}
             <Box sx={{
                 flex: 1,
                 backgroundColor: '#FFD2FE',

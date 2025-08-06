@@ -57,13 +57,15 @@
   .layout-content {
     flex: 1;
     padding: 0.3rem;
+    /* Opcional: oscurecer fondo cuando sidebar abierto */
     position: relative;
     z-index: 1;
   }
 }
 @media (min-width: 769px) {
   .layout-body {
-    padding-left: 250px; 
+    padding-left: 250px; /* ancho del sidebar fijo */
   }
 }
 
+/*NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR NO TOCAR */

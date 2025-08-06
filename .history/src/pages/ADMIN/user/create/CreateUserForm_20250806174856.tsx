@@ -124,7 +124,19 @@ const CreateUserForm: React.FC = () => {
                         </Select>
                     </FormControl>
                     <FormControl fullWidth margin="normal">
-                        
+                        {/*<InputLabel>Parentesco (opcional)</InputLabel>
+                        <Select
+                            value={parentesco}
+                            label="Parentesco (opcional)"
+                            onChange={(e) => setParentesco(e.target.value)}
+                        >
+                            <MenuItem value="">Ninguno</MenuItem>
+                            {parentescoOptions.map((option) => (
+                                <MenuItem key={option} value={option}>
+                                    {option}
+                                </MenuItem>
+                            ))}
+                        </Select>*/}
                     </FormControl>
                     <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
                         Crear usuario

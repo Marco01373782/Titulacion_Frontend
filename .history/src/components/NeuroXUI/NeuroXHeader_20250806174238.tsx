@@ -123,7 +123,7 @@ const NeuroXHeader: React.FC<NeuroXHeaderProps> = ({ onToggleSidebar }) => {
         />
       )}
 
-      
+      {/* Ventana modal de ajustes */}
       <SettingsModal open={settingsOpen} onClose={handleCloseSettings} />
     </>
   );

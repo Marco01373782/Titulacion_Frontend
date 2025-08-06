@@ -26,7 +26,7 @@ const NavegadorBanner: React.FC = () => {
 
     const handleClose = () => {
         setVisible(false);
-        
+        // ya no guardamos nada en localStorage
     };
 
     if (!visible) return null;

@@ -26,7 +26,7 @@ const MemoriaVisual: React.FC<{ onFinish?: (score: number) => void }> = ({ onFin
 
         setTimeout(() => {
             setStep('select');
-        }, 10000); 
+        }, 10000); // 8 segundos para memorizar
     };
 
     const toggleSelect = (emoji: string) => {

@@ -21,7 +21,7 @@ interface SettingsModalProps {
 const SettingsModal: React.FC<SettingsModalProps> = ({ open, onClose }) => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-    const { darkMode, toggleDarkMode } = useThemeMode(); 
+    const { darkMode, toggleDarkMode } = useThemeMode(); // ✅ AQUÍ va el hook
 
     return (
         <Modal open={open} onClose={onClose}>

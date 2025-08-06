@@ -45,7 +45,7 @@ const Register = () => {
     };
 
     const handleSelectChange = (event: any) => {
-        const value = event.target.value;
+        const value = event.ta
         setFormData(prev => ({ ...prev, parentesco: value }));
     };
 
