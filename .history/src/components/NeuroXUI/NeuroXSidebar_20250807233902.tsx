@@ -128,7 +128,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
                                 <ListItemIcon sx={{ color: theme.palette.primary.main }}>
                                     <SportsEsportsIcon />
                                 </ListItemIcon>
-                                <ListItemText primary="Sesiones Libres" />
+                                <ListItemText primary="Sesiones " />
                             </ListItemButton>
                         </ListItem>
                     </>
